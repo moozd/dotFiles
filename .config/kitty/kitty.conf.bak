@@ -1,0 +1,10 @@
+
+include ./mappings.conf 
+include ./theme.conf
+
+url_style curly
+enable_audio_bell no
+mouse_hide_wait 3.0
+detect_urls yes
+open_url_with default
+
