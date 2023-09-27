@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/zaadee/.vim/sessions'
+let g:netrw_dirhist_8='/Users/zaadee/.vim'
+let g:netrw_dirhist_7='/Users/zaadee/.config/nvim/lua'
+let g:netrw_dirhist_6='/Users/zaadee/.config/nvim'
+let g:netrw_dirhist_5='/Users/zaadee/.config/nvim/lua'
+let g:netrw_dirhist_4='/Users/zaadee/.config/nvim/lua/plugins'
+let g:netrw_dirhist_3='/Users/zaadee/.config/nvim/lua'
+let g:netrw_dirhist_2='/Users/zaadee/.config/nvim'
+let g:netrw_dirhist_1='/Users/zaadee/Workspace/rodeo-gateway/src'
+let g:netrw_dirhist_0='/Users/zaadee/Workspace/rodeo-gateway'
