@@ -3,7 +3,7 @@ return function()
   require("lualine").setup({
     options = {
       theme = "auto", --"seoul256", -- lualine theme
-      globalstatus = true,
+      globalstatus = false,
     },
     extensions = { "neo-tree", "lazy" },
     sections = {
