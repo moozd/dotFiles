@@ -1,6 +1,5 @@
 
 include ./mappings.conf 
-include ./theme.conf
 
 url_style curly
 enable_audio_bell no
@@ -8,3 +7,12 @@ mouse_hide_wait 3.0
 detect_urls yes
 open_url_with default
 
+
+
+# BEGIN_KITTY_THEME
+# Catppuccin-Mocha
+include current-theme.conf
+# END_KITTY_THEME
+
+
+include ./theme.conf

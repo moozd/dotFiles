@@ -32,10 +32,15 @@ map.n["ghh"] = {
   end,
 }
 
-map.n["<leader><Left>"] = { "<C-w>h", desc = Util.get_icon("ArrowLeft", 1) .. "Left" }
-map.n["<leader><Down>"] = { "<C-w>j", desc = Util.get_icon("ArrowDown", 1) .. "Down" }
-map.n["<leader><Up>"] = { "<C-w>k", desc = Util.get_icon("ArrowUp", 1) .. "Up" }
-map.n["<leader><Right>"] = { "<C-w>l", desc = Util.get_icon("ArrowRight", 1) .. "Right" }
+map.n['<leader>x'] = {"<cmd>bdelete<cr>",desc=Util.get_icon("BufferClose",1).."Close"}
+map.n['<leader>w'] = {"<cmd>w<cr>",desc=Util.get_icon("DefaultFile",1).."Save"}
+map.n['<leader>]'] = {"<cmd>bnext<cr>" , desc=Util.get_icon("ArrowRight",1).." Next"}
+map.n['<leader>['] = {"<cmd>bprev<cr>" , desc=Util.get_icon("ArrowLeft",1).." Prev"}
+
+-- map.n["<leader><Left>"] = { "<C-w>h", desc = Util.get_icon("ArrowLeft", 1) .. "Left" }
+-- map.n["<leader><Down>"] = { "<C-w>j", desc = Util.get_icon("ArrowDown", 1) .. "Down" }
+-- map.n["<leader><Up>"] = { "<C-w>k", desc = Util.get_icon("ArrowUp", 1) .. "Up" }
+-- map.n["<leader><Right>"] = { "<C-w>l", desc = Util.get_icon("ArrowRight", 1) .. "Right" }
 map.n["m<Up>"] = { "<cmd>resize +2<CR>", desc = "Resize split up" }
 map.n["m<down>"] = { "<cmd>resize -2<CR>", desc = "Resize split down" }
 map.n["m<Right>"] = { "<cmd>vertical resize -5<CR>", desc = "Resize split left" }
