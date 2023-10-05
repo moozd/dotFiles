@@ -1,0 +1,16 @@
+# /Users/zaadee/.config/tmuxinator/configs.yml
+
+name: configs
+root: ~/
+
+windows:
+  - nvim:
+      root: ~/.config/nvim/
+      panes:
+        - nvim .
+  - kitty:
+      root: ~/.config/kitty/
+      panes:
+        - nvim .
+  - tmux: nvim .tmux.conf
+  - zsh: nvim .zshrc
