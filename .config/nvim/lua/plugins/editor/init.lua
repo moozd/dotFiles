@@ -5,6 +5,20 @@ return {
       require("template-string").setup()
     end,
   },
+  -- {
+  --   "folke/flash.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "f",     mode = { "n", "o", "x" }, function() require("flash").jump() end,              desc = "Flash" },
+  --     { "F",     mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+  --     { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+  --     { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end,desc ="Treesitter Search" },
+  --     { "<c-f>", mode = { "c" },           function() require("flash").toggle() end,            desc =
+  --     "Toggle Flash Search" },
+  --   },
+  -- },
   --- syntax
   {
     "nvim-treesitter/nvim-treesitter",
@@ -23,25 +37,26 @@ return {
       })
     end,
   },
+  {"windwp/nvim-ts-autotag",config=function ()
+    require("nvim-ts-autotag").setup({})
+  end},
   {
-    'alexghergh/nvim-tmux-navigation',
+    "alexghergh/nvim-tmux-navigation",
     lazy = false,
     config = function()
+      local nvim_tmux_nav = require("nvim-tmux-navigation")
 
-        local nvim_tmux_nav = require('nvim-tmux-navigation')
+      nvim_tmux_nav.setup({
+        disable_when_zoomed = true, -- defaults to false
+      })
 
-        nvim_tmux_nav.setup {
-            disable_when_zoomed = true -- defaults to false
-        }
-
-        vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-        vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-        vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-        vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-        vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-        vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
-
-    end
+      vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+      vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+      vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+      vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+      vim.keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+      vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+    end,
   },
   -- {
   --   "NvChad/nvim-colorizer.lua",
@@ -87,7 +102,7 @@ return {
     "moozd/aidoc.nvim",
     config = function()
       require("aidoc").setup({
-        email = "mohammad.mdz72@gmail.com"
+        email = "mohammad.mdz72@gmail.com",
       })
     end,
   },

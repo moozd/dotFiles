@@ -163,3 +163,6 @@ gifify() {
 
 
 alias config='/usr/bin/git --git-dir=/Users/zaadee/dotfiles/ --work-tree=/Users/zaadee'
+alias tx='tmuxinator'
+
+export EDITOR="nvim"

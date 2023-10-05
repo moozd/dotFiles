@@ -388,6 +388,7 @@ nnoremap <silent> <Plug>(coc-explorer-key-n-l) :call coc#rpc#request('doKeymap
 nnoremap <silent> <Plug>(coc-explorer-key-n-h) :call coc#rpc#request('doKeymap', ['coc-explorer-key-n-h'])
 nnoremap <silent> <Plug>(coc-explorer-key-n-[tab]) :call coc#rpc#request('doKeymap', ['coc-explorer-key-n-[tab]'])
 nnoremap <silent> <Plug>(coc-explorer-key-n-*) :call coc#rpc#request('doKeymap', ['coc-explorer-key-n-*'])
+nnoremap <SNR>112_: :=v:count ? v:count : ''
 xnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 onoremap <silent> <Plug>(fzf-maps-o) :call fzf#vim#maps('o', 0)
@@ -796,7 +797,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/.vim
+cd ~/Github/vimb
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -807,51 +808,39 @@ else
 endif
 argglobal
 %argdel
+$argadd .
+edit ~/Github/vimb
 argglobal
-enew
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <buffer> <silent> <M-n> :call AutoPairsJump()a
-inoremap <buffer> <silent> <expr> <M-p> AutoPairsToggle()
-inoremap <buffer> <silent> <M-b> =AutoPairsBackInsert()
-inoremap <buffer> <silent> <M-e> =AutoPairsFastWrap()
-inoremap <buffer> <silent> <C-H> =AutoPairsDelete()
-inoremap <buffer> <silent> <BS> =AutoPairsDelete()
-inoremap <buffer> <silent> <M-'> =AutoPairsMoveCharacter('''')
-inoremap <buffer> <silent> <M-"> =AutoPairsMoveCharacter('"')
-inoremap <buffer> <silent> <M-}> =AutoPairsMoveCharacter('}')
-inoremap <buffer> <silent> <M-{> =AutoPairsMoveCharacter('{')
-inoremap <buffer> <silent> <M-]> =AutoPairsMoveCharacter(']')
-inoremap <buffer> <silent> <M-[> =AutoPairsMoveCharacter('[')
-inoremap <buffer> <silent> <M-)> =AutoPairsMoveCharacter(')')
-inoremap <buffer> <silent> <M-(> =AutoPairsMoveCharacter('(')
-inoremap <buffer> <silent> § =AutoPairsMoveCharacter('''')
-inoremap <buffer> <silent> ¢ =AutoPairsMoveCharacter('"')
-inoremap <buffer> <silent> © =AutoPairsMoveCharacter(')')
-inoremap <buffer> <silent> ¨ =AutoPairsMoveCharacter('(')
-inoremap <buffer> <silent> î :call AutoPairsJump()a
-inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
-inoremap <buffer> <silent> â =AutoPairsBackInsert()
-inoremap <buffer> <silent> å =AutoPairsFastWrap()
-inoremap <buffer> <silent> ý =AutoPairsMoveCharacter('}')
-inoremap <buffer> <silent> û =AutoPairsMoveCharacter('{')
-inoremap <buffer> <silent> Ý =AutoPairsMoveCharacter(']')
-inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
-noremap <buffer> <silent> <M-n> :call AutoPairsJump()
-noremap <buffer> <silent> <M-p> :call AutoPairsToggle()
-inoremap <buffer> <silent>  =AutoPairsDelete()
-inoremap <buffer> <silent>   =AutoPairsSpace()
-inoremap <buffer> <silent> " =AutoPairsInsert('"')
-inoremap <buffer> <silent> ' =AutoPairsInsert('''')
-inoremap <buffer> <silent> ( =AutoPairsInsert('(')
-inoremap <buffer> <silent> ) =AutoPairsInsert(')')
-noremap <buffer> <silent> î :call AutoPairsJump()
-noremap <buffer> <silent> ð :call AutoPairsToggle()
-inoremap <buffer> <silent> [ =AutoPairsInsert('[')
-inoremap <buffer> <silent> ] =AutoPairsInsert(']')
-inoremap <buffer> <silent> ` =AutoPairsInsert('`')
-inoremap <buffer> <silent> { =AutoPairsInsert('{')
-inoremap <buffer> <silent> } =AutoPairsInsert('}')
+imap <buffer> <MiddleMouse> <Plug>IMiddlemouse
+imap <buffer> <LeftMouse> <Plug>ILeftmouse
+nmap <buffer>  <Plug>NetrwHideEdit
+nmap <buffer> <nowait> <silent>  <Plug>NetrwRefresh
+nmap <buffer> <nowait> <silent>  <Plug>NetrwLocalBrowseCheck
+nmap <buffer> <nowait> <silent>  <Plug>NetrwServerEdit
+nmap <buffer> <nowait> <silent> % <Plug>NetrwOpenFile
+nmap <buffer> <nowait> <silent> - <Plug>NetrwBrowseUpDir
+nmap <buffer> <nowait> <silent> C <Plug>NetrwSetChgwin
+nmap <buffer> <nowait> <silent> a <Plug>NetrwHide_a
+nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
+nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
+nmap <buffer> <nowait> <silent> cb <Plug>NetrwBadd_cb
+nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
+nnoremap <buffer> <F1> :he netrw-quickhelp
+nmap <buffer> <silent> <Plug>Netrw2Leftmouse -
+nmap <buffer> <2-LeftMouse> <Plug>Netrw2Leftmouse
+nmap <buffer> <S-LeftDrag> <Plug>NetrwSLeftdrag
+nmap <buffer> <S-LeftMouse> <Plug>NetrwSLeftmouse
+nmap <buffer> <MiddleMouse> <Plug>NetrwMiddlemouse
+nmap <buffer> <C-LeftMouse> <Plug>NetrwCLeftmouse
+nmap <buffer> <LeftMouse> <Plug>NetrwLeftmouse
+nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
+nnoremap <buffer> <silent> <S-Up> :Pexplore
+nnoremap <buffer> <silent> <S-Down> :Nexplore
+nmap <buffer> <C-H> <Plug>NetrwHideEdit
+nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
+nmap <buffer> <nowait> <silent> <C-L> <Plug>NetrwRefresh
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal noautoindent
@@ -859,8 +848,8 @@ setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
+setlocal bufhidden=delete
+setlocal nobuflisted
 setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
@@ -878,7 +867,7 @@ setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
-setlocal nocursorline
+setlocal cursorline
 setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
@@ -886,8 +875,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != ''
-setlocal filetype=
+if &filetype != 'netrw'
+setlocal filetype=netrw
 endif
 setlocal fillchars=
 setlocal fixendofline
@@ -925,19 +914,19 @@ setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
-setlocal modifiable
+setlocal nomodifiable
 setlocal nrformats=bin,octal,hex
 set number
-setlocal number
+setlocal nonumber
 setlocal numberwidth=4
 setlocal omnifunc=
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
-setlocal noreadonly
+setlocal readonly
 set relativenumber
-setlocal relativenumber
+setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=8
@@ -956,10 +945,10 @@ setlocal spelllang=en
 setlocal spelloptions=
 setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
-setlocal swapfile
+setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != ''
-setlocal syntax=
+if &syntax != 'netrw'
+setlocal syntax=netrw
 endif
 setlocal tabstop=8
 setlocal tagcase=
@@ -980,7 +969,15 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-lcd ~/.vim
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 11 - ((10 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 11
+normal! 0
+lcd ~/Github
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

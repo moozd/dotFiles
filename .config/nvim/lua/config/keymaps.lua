@@ -3,10 +3,6 @@ local Apps = require("moozd.apps")
 
 local map = Util.empty_map_table()
 
-
-
-
-
 --- navigation ---------------------
 map.n["<Tab>"] = { "<cmd>:Buffers<cr>", desc = "Find a buffer" }
 map.n["<Tab><Tab>"] = { "<cmd>:Files<cr>", desc = "Find a file" }
@@ -32,10 +28,21 @@ map.n["ghh"] = {
   end,
 }
 
-map.n['<leader>x'] = {"<cmd>bdelete<cr>",desc=Util.get_icon("BufferClose",1).."Close"}
-map.n['<leader>w'] = {"<cmd>w<cr>",desc=Util.get_icon("DefaultFile",1).."Save"}
-map.n['<leader>]'] = {"<cmd>bnext<cr>" , desc=Util.get_icon("ArrowRight",1).." Next"}
-map.n['<leader>['] = {"<cmd>bprev<cr>" , desc=Util.get_icon("ArrowLeft",1).." Prev"}
+map.n["<leader>x"] = { "<cmd>bdelete<cr>", desc = Util.get_icon("BufferClose", 1) .. "Close" }
+map.n["<leader>X"] = { function() 
+local bufs=vim.api.nvim_list_bufs()
+local current_buf=vim.api.nvim_get_current_buf()
+for _,i in ipairs(bufs) do
+    if i~=current_buf then
+        vim.api.nvim_buf_delete(i,{})
+    end
+end
+
+
+end , desc= Util.get_icon("BufferClose",1).. "Close all but this"}
+map.n["<leader>w"] = { "<cmd>w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" }
+map.n["<leader>]"] = { "<cmd>bnext<cr>", desc = Util.get_icon("ArrowRight", 1) .. " Next" }
+map.n["<leader>["] = { "<cmd>bprev<cr>", desc = Util.get_icon("ArrowLeft", 1) .. " Prev" }
 
 -- map.n["<leader><Left>"] = { "<C-w>h", desc = Util.get_icon("ArrowLeft", 1) .. "Left" }
 -- map.n["<leader><Down>"] = { "<C-w>j", desc = Util.get_icon("ArrowDown", 1) .. "Down" }
@@ -64,8 +71,8 @@ local sections = {
   f = { desc = Util.get_icon("Search", 1) .. "Find" },
   c = { desc = Util.get_icon("DefaultFile", 1) .. "Code" },
   a = { desc = Util.get_icon("Terminal", 1) .. "Apps" },
+  d = { desc = Util.get_icon("Diagnostics", 1) .. "Diagnostics" },
 }
-
 
 map.n["<leader>a"] = sections.a
 map.n["<leader>ae"] = { "<cmd>Neotree position=float<cr>", desc = Util.get_icon("FolderOpen", 1) .. "Explorer" }
@@ -74,6 +81,15 @@ map.n["<leader>at"] = { Apps.terminal, desc = Util.get_icon("Terminal", 1) .. "T
 map.n["<leader>ad"] = { Apps.lazydocker, desc = Util.get_icon("Docker", 1) .. "Docker" }
 map.n["<leader>as"] = { Apps.btm, desc = Util.get_icon("Stats", 1) .. "Stats" }
 map.n["<leader>ar"] = { Apps.redis, desc = Util.get_icon("Redis", 1) .. "Redis" }
+
+--- Diagnostic --------------------------
+
+map.n["<leader>d"] = sections.d
+-- stylua: ignore
+map.n["<leader>d]"] = { function() vim.diagnostic.goto_next() end, desc = "Goto next diagnostic" }
+-- stylua: ignore
+map.n["<leader>d["] = { function() vim.diagnostic.goto_prev() end, desc = "Goto previous diagnostic" }
+map.n["<leader>dd"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Diagnostics" }
 
 --- find --------------------------
 map.n["<leader>f"] = sections.f
@@ -86,7 +102,6 @@ map.n["<leader>fD"] =
 --- code --------------------------
 map.n["<leader>c"] = sections.c
 map.n["<leader>cf"] = { vim.lsp.buf.format, desc = "Format" }
-map.n["<leader>cd"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Diagnostics" }
 map.n["<leader>cr"] = { vim.lsp.buf.rename, desc = "Rename" }
 map.n["<leader>cc"] = { vim.lsp.buf.code_action, desc = "Code actions" }
 map.n["<leader>ct"] = { "<cmd>TestSuite<cr>", desc = "Run tests" }

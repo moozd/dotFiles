@@ -19,10 +19,10 @@ return function()
 
       lualine_x = {
         -- require("moozd.statusline").lsp,
-        {
-          "filetype",
-          icon_only = false,
-        },
+        -- {
+        --   "filetype",
+        --   icon_only = false,
+        -- },
         {
           "filename",
           file_status = true,     -- Displays file status (readonly status, modified status)
