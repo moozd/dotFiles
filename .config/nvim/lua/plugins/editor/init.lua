@@ -37,9 +37,23 @@ return {
       })
     end,
   },
-  {"windwp/nvim-ts-autotag",config=function ()
-    require("nvim-ts-autotag").setup({})
-  end},
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+    init = function()
+      vim.g.VM_maps = {
+        ["Select Cursor Down"] = "<M-C-Down>",
+        ["Select Cursor Up"] = "<M-C-Up>"
+
+      }
+    end,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup({})
+    end,
+  },
   {
     "alexghergh/nvim-tmux-navigation",
     lazy = false,
@@ -58,6 +72,7 @@ return {
       vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
     end,
   },
+
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   config = function()

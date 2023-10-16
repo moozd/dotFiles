@@ -131,6 +131,7 @@ if [ -f '/Users/zaadee/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/
 
 
 export PATH="$HOME/.local/bin":$PATH
+export PATH="$HOME/go/bin/":$PATH
 
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
@@ -162,7 +163,18 @@ gifify() {
 }
 
 
+export XDG_CONFIG_HOME=~/.config
+
 alias config='/usr/bin/git --git-dir=/Users/zaadee/dotfiles/ --work-tree=/Users/zaadee'
-alias tx='tmuxinator'
+alias xs='tmuxinator start'
+alias xc='tmux new'
+alias xa='tmux attach'
+alias xk='tmux kill-server'
 
 export EDITOR="nvim"
+
+PATH="/Users/zaadee/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/zaadee/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/zaadee/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/zaadee/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/zaadee/perl5"; export PERL_MM_OPT;

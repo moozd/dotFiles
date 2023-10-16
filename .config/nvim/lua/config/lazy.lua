@@ -11,6 +11,8 @@ require("lazy").setup({
   spec = {
     { "rafi/awesome-vim-colorschemes", lazy = false },
     { "catppuccin/nvim",                              lazy = false },
+    {"dracula/vim", lazy=false},
+    {"loctvl842/monokai-pro.nvim",lazy=false},
     { import = "plugins" },
   },
 

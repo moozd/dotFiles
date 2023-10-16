@@ -87,6 +87,16 @@ function M.create_terminal_app(opts)
   end
 end
 
+function M.close_all_but_this()
+  local bufs = vim.api.nvim_list_bufs()
+  local current_buf = vim.api.nvim_get_current_buf()
+  for _, i in ipairs(bufs) do
+    if i ~= current_buf then
+      vim.api.nvim_buf_delete(i, {})
+    end
+  end
+end
+
 function M.augroup(name)
   return vim.api.nvim_create_augroup("moozd_" .. name, { clear = true })
 end
