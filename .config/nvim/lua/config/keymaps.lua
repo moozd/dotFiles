@@ -21,9 +21,7 @@ map.n["gK"] = { vim.lsp.buf.signature_help, desc = "Show signature help" }
 map.n["gh"] = { function() vim.diagnostic.config({ virtual_text = true }) end, }
 -- stylua: ignore
 map.n["ghh"] = { function() vim.diagnostic.config({ virtual_text = false }) end, }
-
 map.n["X"] = { '<cmd>let @/=""<cr>', desc = "Cancel search" }
-
 -- map.n["<leader><Left>"] = { "<C-w>h", desc = Util.get_icon("ArrowLeft", 1) .. "Left" }
 -- map.n["<leader><Down>"] = { "<C-w>j", desc = Util.get_icon("ArrowDown", 1) .. "Down" }
 -- map.n["<leader><Up>"] = { "<C-w>k", desc = Util.get_icon("ArrowUp", 1) .. "Up" }

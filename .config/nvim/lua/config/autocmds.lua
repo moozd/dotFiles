@@ -42,7 +42,7 @@ autocmd("BufWritePost", {
   desc = "Auto format after save",
   group = augroup("format_after_save"),
   callback = function()
-    vim.lsp.buf.format()
+    vim.cmd("silent! lua vim.lsp.buf.format()")
   end,
 })
 
@@ -65,8 +65,8 @@ autocmd("FileType", {
     "neotest-output-panel",
     "toggleterm",
     "telescope",
-    "terminal"
-    ,"fzf"
+    "terminal",
+    "fzf",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

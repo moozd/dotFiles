@@ -4,7 +4,7 @@ require("config.lazy")
 require("config.autocmds")
 require("config.keymaps")
 
-vim.cmd.colorscheme('monokai-pro-classic')
+vim.cmd.colorscheme('monokai-pro-spectrum')
 -- vim.cmd.colorscheme("sonokai")
 -- vim.cmd.colorscheme("catppuccin")
 vim.cmd("highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl")

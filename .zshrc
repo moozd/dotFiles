@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose)
+plugins=(git docker docker-compose firebase)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,6 +110,23 @@ source $ZSH/oh-my-zsh.sh
 # autoload -U promptinit; promptinit
 # prompt pure
 
+
+#=========================================================
+export XDG_CONFIG_HOME=~/.config
+
+alias config='/usr/bin/git --git-dir=/Users/zaadee/dotfiles/ --work-tree=/Users/zaadee'
+alias vi='nvim'
+alias vim='nvim'
+alias xs='tmuxinator start'
+alias xc='tmux new'
+alias xa='tmux attach'
+alias xk='tmux kill-server'
+#---------------------------------------------------------
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export EDITOR="nvim"
+#==========================================================
+
+
 source ~/.zade/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.myrc
 
@@ -133,18 +150,7 @@ if [ -f '/Users/zaadee/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/go/bin/":$PATH
 
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
-
-# export JIRA_API_KEY=ATATT3xFfGF0D1H7rad6TmWN5eY8fptDPdfnIyrjEIbHJkLn3j2u1nJ9wt-hH-pKlRRs-nFcvm4Zcf0qUfuBHQRHTN-pRmNJIQ6WXlcJ3sRoaN1hTYMf1UW4MoHUm0ai0BBqx10inSGulEPafJzT4ZYomLlxLxFFuMh5Bkg1c7b0-MV--Dq67Sg=6F094DB8
-
-
-#
-# alias nvi="neovide"
-alias vi="env TERM=wezterm nvim"
-# alias vim="nvim"
-# alias view="nvim -R"
-# alias vimdiff="nvim -d"
 
 
 
@@ -163,15 +169,6 @@ gifify() {
 }
 
 
-export XDG_CONFIG_HOME=~/.config
-
-alias config='/usr/bin/git --git-dir=/Users/zaadee/dotfiles/ --work-tree=/Users/zaadee'
-alias xs='tmuxinator start'
-alias xc='tmux new'
-alias xa='tmux attach'
-alias xk='tmux kill-server'
-
-export EDITOR="nvim"
 
 PATH="/Users/zaadee/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/zaadee/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

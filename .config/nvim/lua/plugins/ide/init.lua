@@ -12,6 +12,9 @@ return {
     },
     config = require("plugins.ide.setup"),
   },
+  {"simrat39/rust-tools.nvim",config=function ()
+      require('rust-tools').setup({})
+  end},
   { "folke/neodev.nvim", opts = {} },
   {
     "L3MON4D3/LuaSnip",
