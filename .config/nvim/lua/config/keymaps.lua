@@ -64,9 +64,7 @@ local sections = {
 }
 
 --- Explorer ---------------------------
-map.n["<leader>e"] = sections.e
-map.n["<leader>ef"] = { "<cmd>Neotree focus<cr>", desc = Util.get_icon("GitUntracked", 1) .. "Focus" }
-map.n["<leader>ee"] = { "<cmd>Neotree toggle<cr>", desc = Util.get_icon("GitUntracked", 1) .. "Toggle" }
+map.n["<leader>e"] = { "<cmd>Neotree focus toggle<cr>", desc = Util.get_icon("Explorer", 1) .. "Explorer" }
 
 --- Apps -------------------------------
 map.n["<leader>a"] = sections.a
@@ -75,7 +73,7 @@ map.n["<leader>ag"] = { Apps.lazygit, desc = Util.get_icon("Git", 1) .. "Git" }
 map.n["<leader>at"] = { Apps.terminal, desc = Util.get_icon("Terminal", 1) .. "Terminal" }
 map.n["<leader>ad"] = { Apps.lazydocker, desc = Util.get_icon("Docker", 1) .. "Docker" }
 map.n["<leader>as"] = { Apps.btm, desc = Util.get_icon("Stats", 1) .. "Stats" }
-map.n["<leader>ar"] = { Apps.redis, desc = Util.get_icon("Redis", 1) .. "Redis" }
+map.n["<leader>am"] = { Apps.spotify, desc = Util.get_icon("Spotify", 1) .. "Spotify" }
 
 --- Diagnostic --------------------------
 

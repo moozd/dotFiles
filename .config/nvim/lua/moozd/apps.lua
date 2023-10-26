@@ -5,5 +5,5 @@ return {
   lazygit = app({ cmd = "lazygit", dir = "git_dir" }),
   lazydocker = app({ cmd = "lazydocker" }),
   btm = app({ cmd = "btm" }),
-  redis = app({ cmd = "echo" }),
+  spotify=app({cmd="spt"})
 }

@@ -5,6 +5,7 @@ M.source_code_ft = {
 }
 
 M.icons = {
+  Spotify="",
   Docker = "󰡨",
   Stats = "󱕍",
   Jira="󰌃",

@@ -16,13 +16,12 @@ end
 -- config.color_scheme = 'AdventureTime'
 
 -- and finally, return the configurat to wezterm
-config.font = wezterm.font("FiraCode Nerd Font", {
+config.font = wezterm.font("BlexMono Nerd Font", {
 	stretch = "Expanded",
 	weight = "Regular",
 })
 config.line_height = 1.2
 config.default_cursor_style = "BlinkingBlock"
-
 
 -- config.font_size = 15
 config.underline_position = -5

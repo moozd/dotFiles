@@ -13,34 +13,26 @@ return {
     end,
   },
   {
-    "glepnir/dashboard-nvim",
+    "goolord/alpha-nvim",
     event = "VimEnter",
-    -- init = function()
-    --   vim.cmd([[
-    --         set rtp+=/opt/homebrew/bin/fzf
-    --         let g:dashboard_default_executive ='fzf'
-    --     ]])
-    -- end,
-
-    config = function()
-      require("dashboard").setup({
-        theme = "hyper",
-        config = {
-          week_header = {
-            enable = true,
-          },
-          project = { enable = true, limit = 8, action = "FZF" },
-        },
-      })
-    end,
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
+    opts = require("plugins.ui.dashboard").opts,
+    config = require("plugins.ui.dashboard").config,
   },
+  -- {
+  --   "glepnir/dashboard-nvim",
+  --   event = "VimEnter",
+  --
+  --   config = function()
+  --     require("dashboard").setup({})
+  --   end,
+  --   dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  -- },
   {
     "akinsho/bufferline.nvim",
     config = function()
       require("bufferline").setup({
         options = {
-          -- separator_style = "slant",
+          separator_style = "thick",
           offsets = {
             {
               filetype = "neo-tree",

@@ -11,7 +11,6 @@ return {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
-      
     },
   },
   -- {
@@ -71,12 +70,6 @@ return {
       nvim_tmux_nav.setup({
         disable_when_zoomed = true, -- defaults to false
       })
-
-      
-      vim.keymap.set("n", "<F12><Left>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-      vim.keymap.set("n", "<F12><Down>", nvim_tmux_nav.NvimTmuxNavigateDown)
-      vim.keymap.set("n", "<F12><Up>", nvim_tmux_nav.NvimTmuxNavigateUp)
-      vim.keymap.set("n", "<F12><Right>", nvim_tmux_nav.NvimTmuxNavigateRight)
 
       vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
       vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)

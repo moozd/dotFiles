@@ -121,7 +121,12 @@ alias xs='tmuxinator start'
 alias xc='tmux new'
 alias xa='tmux attach'
 alias xk='tmux kill-server'
+
+
+
+
 #---------------------------------------------------------
+COWPATH="$COWPATH:$HOME/.cowsay/cowfiles/"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export EDITOR="nvim"
 #==========================================================

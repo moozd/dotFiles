@@ -1,11 +1,64 @@
 local Util = require("moozd.util")
+
+local colors = {
+  base = {
+    bg = "#282a36",
+    fg = "#f7f7f7",
+  },
+  secondary = {
+    bg = "#282a36",
+    fg = "#50fa7b",
+  },
+  black = "#272727",
+  normal = "#50fa7b",
+  insert = "#00E3AB",
+  visual = "#00C8D6",
+  command = "#00B5A6",
+  replace = "#00C8D6",
+  inactive = "#50fa7b",
+}
+
+local custom_theme = {
+  normal = {
+    a = { bg = colors.normal, fg = colors.black },
+    b = colors.secondary,
+    c = colors.base,
+  },
+  insert = {
+    a = { bg = colors.insert, fg = colors.black },
+    b = colors.secondary,
+    c = colors.base,
+  },
+  visual = {
+    a = { bg = colors.visual, fg = colors.black },
+    b = colors.secondary,
+    c = colors.base,
+  },
+  replace = {
+    a = { bg = colors.replace, fg = colors.black },
+    b = colors.secondary,
+    c = colors.base,
+  },
+  command = {
+    a = { bg = colors.normal, fg = colors.black },
+    b = colors.secondary,
+    c = colors.base,
+  },
+  inactive = {
+    a = colors.base,
+    b = colors.secondary,
+    c = colors.base,
+  },
+}
+
 return function()
   require("lualine").setup({
+
     options = {
-      theme = "auto",-- "catppuccin", --"seoul256", -- lualine theme
+      theme = custom_theme, -- "catppuccin", --"seoul256", -- lualine theme
       globalstatus = true,
-      component_separators = { left = '', right = ''},
-      section_separators = { left = '', right = ''},
+      component_separators = { left = "", right = "" },
+      section_separators = { right = "", left = "" },
     },
     extensions = { "neo-tree", "lazy" },
     sections = {
