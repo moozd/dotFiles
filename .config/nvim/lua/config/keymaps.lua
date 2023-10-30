@@ -39,6 +39,7 @@ map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 --- overall-------------------------
 
 -- stylua: ignore
+map.n["<leader><Space>"] = { "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
 map.n["<leader>x"] = { "<cmd>bdelete<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
 map.n["<leader>X"] = { Util.close_all_but_this, desc = Util.get_icon("BufferClose", 1) .. "Close All" }
 map.n["<leader>w"] = { "<cmd>w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" }
@@ -88,13 +89,13 @@ map.n["<leader>dd"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "
 map.n["<leader>f"] = sections.f
 map.n["<leader>fs"] = { "<cmd>Ag<cr>", desc = "Search" }
 map.n["<leader>fS"] = { "<cmd>Spectre <cr>", desc = "Replace" }
-map.n["<leader>ff"] = { "<cmd>Telescope find_files<cr>", desc = "Find (Telescope)" }
+map.n["<leader>ff"] = { "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find (Telescope)" }
 map.n["<leader>fz"] = { "<cmd>:Files<cr>", desc = "Find (FZF)" }
-
+map.n["<leader>fw"] = { "<cmd>Telescope live_grep <cr>", desc = "Find words" }
 map.n["<leader>fd"] =
-  { "<cmd>Telescope lsp_document_symbols theme=dropdown previewer=false<cr>", desc = "Find symbols" }
+{ "<cmd>Telescope lsp_document_symbols theme=dropdown previewer=false<cr>", desc = "Find symbols" }
 map.n["<leader>fD"] =
-  { "<cmd>Telescope lsp_workspace_symbols theme=dropdown previewer=false<cr>", desc = "Find project symbols" }
+{ "<cmd>Telescope lsp_workspace_symbols theme=dropdown previewer=false<cr>", desc = "Find project symbols" }
 --- code --------------------------
 map.n["<leader>c"] = sections.c
 map.n["<leader>cf"] = { vim.lsp.buf.format, desc = "Format" }

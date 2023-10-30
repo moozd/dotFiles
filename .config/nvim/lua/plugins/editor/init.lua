@@ -80,13 +80,13 @@ return {
     end,
   },
 
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   config = function()
-  --     require("colorizer").setup()
-  --   end,
-  -- },
-  --
+  {
+    "NvChad/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
+
   --- keyword illuminate
   {
     "RRethy/vim-illuminate",

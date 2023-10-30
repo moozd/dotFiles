@@ -57,8 +57,9 @@ return function()
     options = {
       theme = custom_theme, -- "catppuccin", --"seoul256", -- lualine theme
       globalstatus = true,
-      component_separators = { left = "", right = "" },
-      section_separators = { right = "", left = "" },
+      component_separators = { left = "┊", right = "┊" },
+      -- section_separators = { right = "", left = "" },
+      section_separators = { right = "", left = "" },
     },
     extensions = { "neo-tree", "lazy" },
     sections = {
@@ -80,17 +81,17 @@ return function()
         -- },
         {
           "filename",
-          file_status = true, -- Displays file status (readonly status, modified status)
+          file_status = true,     -- Displays file status (readonly status, modified status)
           newfile_status = false, -- Display new file status (new file means no write after created)
-          path = 1, -- 0: Just the filename
+          path = 1,               -- 0: Just the filename
 
-          shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+          shorting_target = 40,   -- Shortens path to leave 40 spaces in the window
           -- for other components. (terrible name, any suggestions?)
           symbols = {
             modified = Util.icons.FileModified, -- Text to show when the file is modified.
             readonly = Util.icons.FileReadOnly, -- Text to show when the file is non-modifiable or readonly.
-            unnamed = Util.icons.DefaultFile, -- Text to show for unnamed buffers.
-            newfile = Util.icons.FileNew, -- Text to show for newly created file before first write
+            unnamed = Util.icons.DefaultFile,   -- Text to show for unnamed buffers.
+            newfile = Util.icons.FileNew,       -- Text to show for newly created file before first write
           },
         },
 

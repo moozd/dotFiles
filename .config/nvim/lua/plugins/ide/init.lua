@@ -12,9 +12,12 @@ return {
     },
     config = require("plugins.ide.setup"),
   },
-  {"simrat39/rust-tools.nvim",config=function ()
-      require('rust-tools').setup({})
-  end},
+  {
+    "simrat39/rust-tools.nvim",
+    config = function()
+      require("rust-tools").setup({})
+    end,
+  },
   { "folke/neodev.nvim", opts = {} },
   {
     "L3MON4D3/LuaSnip",
@@ -51,6 +54,7 @@ return {
       local defaults = require("cmp.config.default")()
       return {
         completion = {
+          autocomplete = false,
           completeopt = "menu,menuone,noinsert",
         },
         window = {
@@ -84,8 +88,9 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
-          { name = "buffer" },
+          -- { name = "buffer" },
           { name = "path" },
+          { name = "gitmoji" },
         }),
         formatting = {
           format = require("lspkind").cmp_format({
@@ -101,6 +106,20 @@ return {
         sorting = defaults.sorting,
       }
     end,
+  },
+  {
+    "Dynge/gitmoji.nvim",
+    dependencies = {
+      "hrsh7th/nvim-cmp",
+    },
+    opts = { -- the values below are the defaults
+      filetypes = { "gitcommit" },
+      completion = {
+        append_space = false,
+        complete_as = "emoji",
+      },
+    },
+    ft = "gitcommit",
   },
 
   {

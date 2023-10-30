@@ -1,6 +1,0 @@
-{
-  "explorer.icon.enableNerdfont": true,
-  "coc.preferences.formatOnSave": true,
-  "diagnostic.enable": true,
-  "diagnostic-languageserver.enable": true
-}

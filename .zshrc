@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose firebase)
+plugins=(git zsh-autosuggestions docker docker-compose firebase)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -116,11 +116,13 @@ export XDG_CONFIG_HOME=~/.config
 
 alias config='/usr/bin/git --git-dir=/Users/zaadee/dotfiles/ --work-tree=/Users/zaadee'
 alias vi='nvim'
-alias vim='nvim'
 alias xs='tmuxinator start'
 alias xc='tmux new'
 alias xa='tmux attach'
 alias xk='tmux kill-server'
+
+alias python='python3'
+alias pip='pip3'
 
 
 
@@ -180,3 +182,15 @@ PERL5LIB="/Users/zaadee/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5L
 PERL_LOCAL_LIB_ROOT="/Users/zaadee/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/zaadee/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/zaadee/perl5"; export PERL_MM_OPT;
+
+
+
+
+# fix docker sock
+fix_docker_sock() {
+  sudo rm /var/run/docker.sock
+  sudo ln ~/.docker/run/docker.sock /var/run/
+}
+
+
+
