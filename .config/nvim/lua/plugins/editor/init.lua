@@ -105,6 +105,7 @@ return {
   {
     "majutsushi/tagbar",
     init = function()
+      
       vim.g.tagbar_show_ballon = 0
     end,
   },

@@ -26,8 +26,8 @@ return {
   --     require("dashboard").setup({})
   --   end,
   --   dependencies = { { "nvim-tree/nvim-web-devicons" } },
-  -- },
-  {
+  -- }, 
+{
     "akinsho/bufferline.nvim",
     config = function()
       require("bufferline").setup({

@@ -9,41 +9,47 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
+    { "rktjmp/lush.nvim",         lazy = false },
+    { "ribru17/bamboo.nvim",      lazy = false },
+    {"JoosepAlviste/palenightfall.nvim",lazy=false},
     -- { "rafi/awesome-vim-colorschemes", lazy = false },
-    -- { "catppuccin/nvim",               lazy = false },
+    { "catppuccin/nvim",               lazy = false },
     -- { "dracula/vim",                   lazy = false },
     -- { "loctvl842/monokai-pro.nvim",    lazy = false },
     -- { "Yazeed1s/minimal.nvim",         lazy = false },
     -- { "savq/melange-nvim",             lazy = false },
-   {
-      "folke/tokyonight.nvim",
-      lazy = false,
-      priority = 1000,
-      opts = {},
-    },
-    {
-      "ray-x/starry.nvim",
-      lazy = false,
-      init = function()
-        vim.g.starry_italic = true
-
-        vim.g.starry_italic_comments = true
-        vim.g.starry_italic_string = false
-        vim.g.starry_italic_functions = false
-        vim.g.starry_italic_variables = false
-        vim.g.starry_italic_keywords = true
-        vim.g.starry_italic_functions = false
-
-        vim.g.starry_contrast = true
-        vim.g.starry_borders = false
-        vim.g.starry_disable_background = false
-        vim.g.starry_style_fix = true
-        vim.g.starry_darker_contrast = true
-        vim.g.starry_deep_black = false
-        vim.g.starry_set_hl = false
-        vim.g.starry_daylight_switch = false
-      end,
-    },
+    -- {"metalelf0/jellybeans-nvim",lazy=false},
+    --
+    -- {
+    --    "folke/tokyonight.nvim",
+    --    lazy = false,
+    --    priority = 1000,
+    --    opts = {},
+    --  },
+    --  {"briones-gabriel/darcula-solid.nvim", lazy=false ,dependecies = {"rktjmp/lush.nvim"}},
+    --  {
+    --    "ray-x/starry.nvim",
+    --    lazy = false,
+    --    init = function()
+    --      vim.g.starry_italic = true
+    --
+    --      vim.g.starry_italic_comments = true
+    --      vim.g.starry_italic_string = false
+    --      vim.g.starry_italic_functions = false
+    --      vim.g.starry_italic_variables = false
+    --      vim.g.starry_italic_keywords = true
+    --      vim.g.starry_italic_functions = false
+    --
+    --      vim.g.starry_contrast = true
+    --      vim.g.starry_borders = false
+    --      vim.g.starry_disable_background = false
+    --      vim.g.starry_style_fix = true
+    --      vim.g.starry_darker_contrast = true
+    --      vim.g.starry_deep_black = false
+    --      vim.g.starry_set_hl = false
+    --      vim.g.starry_daylight_switch = false
+    --    end,
+    --  },
     { import = "plugins" },
   },
 

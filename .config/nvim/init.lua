@@ -4,11 +4,10 @@ require("config.lazy")
 require("config.autocmds")
 require("config.keymaps")
 
-vim.cmd.colorscheme("tokyonight-moon")
-
 -- vim.cmd.colorscheme("minimal")
 -- vim.cmd.colorscheme("sonokai")
--- vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin-mocha")
+
 vim.cmd("highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl")
 vim.cmd("highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl")
 vim.cmd("highlight DiagnosticUnderlineWarn cterm=undercurl gui=undercurl")

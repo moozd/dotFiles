@@ -5,7 +5,7 @@ local map = Util.empty_map_table()
 
 --- navigation ---------------------
 map.n["<C-Tab>"] = { "<cmd>:Buffers<cr>", desc = "Find a buffer" }
----lsp
+---lp
 map.n["gd"] = { vim.lsp.buf.definition, desc = "Go to definitions" }
 map.n["gt"] = { vim.lsp.buf.type_definition, desc = "Go type to definitions" }
 map.n["gs"] = { vim.lsp.buf.document_symbol, desc = "Go to document symbols" }
@@ -39,7 +39,10 @@ map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 --- overall-------------------------
 
 -- stylua: ignore
-map.n["<leader><Space>"] = { "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
+map.n["<leader><Space>"] = {
+  "<cmd>Telescope buffers theme=dropdown previewer=false<cr>",
+  desc = Util.get_icon("DefaultFile", 1) .. "Buffers"
+}
 map.n["<leader>x"] = { "<cmd>bdelete<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
 map.n["<leader>X"] = { Util.close_all_but_this, desc = Util.get_icon("BufferClose", 1) .. "Close All" }
 map.n["<leader>w"] = { "<cmd>w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" }
@@ -60,12 +63,19 @@ local sections = {
   f = { desc = Util.get_icon("Search", 1) .. "Find" },
   c = { desc = Util.get_icon("DefaultFile", 1) .. "Code" },
   a = { desc = Util.get_icon("Terminal", 1) .. "Apps" },
+  g = { desc = Util.get_icon("Git", 1) .. "Git" },
   d = { desc = Util.get_icon("Diagnostic", 1) .. "Diagnostics" },
   l = { desc = Util.get_icon("GitUntracked", 1) .. "LeetCode" },
 }
 
 --- Explorer ---------------------------
 map.n["<leader>e"] = { "<cmd>Neotree focus toggle<cr>", desc = Util.get_icon("Explorer", 1) .. "Explorer" }
+
+--- Git --------------------------------
+map.n["<leader>g"] = sections.g
+map.n["<leader>gd"] = { "<cmd>Gdiffsplit<cr>", desc = "Diff" }
+map.n["<leader>gc"] = { "<cmd>BCommits<cr>", desc = "Commits" }
+map.n["<leader>gb"] = { "<cmd>Git blame<cr>", desc = "Blame" }
 
 --- Apps -------------------------------
 map.n["<leader>a"] = sections.a
