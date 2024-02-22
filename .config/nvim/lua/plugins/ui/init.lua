@@ -6,7 +6,7 @@ return {
     config = function(opts)
       require("transparent").setup({
         extra_groups = {
-          "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+          "NormalFloat",    -- plugins which have float panel such as Lazy, Mason, LspInfo
           "NvimTreeNormal", -- NvimTree
         },
       })
@@ -26,23 +26,24 @@ return {
   --     require("dashboard").setup({})
   --   end,
   --   dependencies = { { "nvim-tree/nvim-web-devicons" } },
-  -- }, 
-{
+  -- },
+  {
     "akinsho/bufferline.nvim",
+      enabled =false,
     config = function()
-      require("bufferline").setup({
-        options = {
-          separator_style = "thick",
-          offsets = {
-            {
-              filetype = "neo-tree",
-              text = "Explorer",
-              text_align = "center",
-              separator = true,
+         require("bufferline").setup({
+            options = {
+              separator_style = "thick",
+              offsets = {
+                {
+                  filetype = "neo-tree",
+                  text = "Explorer",
+                  text_align = "center",
+                  separator = true,
+                },
+              },
             },
-          },
-        },
-      })
+          })
     end,
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
@@ -134,9 +135,9 @@ return {
         winbar = true,
         content_layout = "center",
         sources = {
-          { source = "filesystem", display_name = Util.get_icon("FolderClosed", 1) .. "File" },
-          { source = "buffers", display_name = Util.get_icon("DefaultFile", 1) .. "Bufs" },
-          { source = "git_status", display_name = Util.get_icon("Git", 1) .. "Git" },
+          { source = "filesystem",  display_name = Util.get_icon("FolderClosed", 1) .. "File" },
+          { source = "buffers",     display_name = Util.get_icon("DefaultFile", 1) .. "Bufs" },
+          { source = "git_status",  display_name = Util.get_icon("Git", 1) .. "Git" },
           { source = "diagnostics", display_name = Util.get_icon("Diagnostic", 1) .. "Diagnostic" },
         },
       },
@@ -148,9 +149,9 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = Util.icons.GitAdd, -- or "✚", but this is redundant info if you use git_status_colors on the name
+            added = Util.icons.GitAdd,       -- or "✚", but this is redundant info if you use git_status_colors on the name
             modified = Util.icons.GitChange, -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted = Util.icons.GitDelete, -- this can only be used in the git_status source
+            deleted = Util.icons.GitDelete,  -- this can only be used in the git_status source
             renamed = Util.icons.GitRenamed, -- this can only be used in the git_status source
             -- Status type
             untracked = Util.icons.GitUntracked,
@@ -165,7 +166,7 @@ return {
       filesystem = {
         use_libuv_file_watcher = true,
         follow_current_file = {
-          enabled = true, -- This will find and focus the file in the active buffer every time
+          enabled = true,         -- This will find and focus the file in the active buffer every time
           --               -- the current file is changed while the tree is open.
           leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },

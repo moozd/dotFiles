@@ -40,7 +40,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
-    event = "InsertEnter",
+    -- event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
@@ -54,8 +54,7 @@ return {
       local defaults = require("cmp.config.default")()
       return {
         completion = {
-          autocomplete = false,
-          completeopt = "menu,menuone,noinsert",
+          completeopt = "menu,menuone",
         },
         window = {
           documentation = {
@@ -130,5 +129,11 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     },
+  },
+  {
+    "notjedi/nvim-rooter.lua",
+    config = function()
+      require("nvim-rooter").setup()
+    end,
   },
 }

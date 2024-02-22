@@ -3,6 +3,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.molokai_original = 1
 
+if vim.g.neovide then
+  -- vim.o.guifont="IBM Plex Mono: h12"
+  vim.o.guifont = "FiraCode Nerd Font Mono:h12"
+end
+
 local opt = vim.opt
 opt.autochdir = false
 opt.autowrite = true           -- Enable autox write
