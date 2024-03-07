@@ -67,6 +67,7 @@ autocmd("FileType", {
     "telescope",
     "terminal",
     "fzf",
+    "dbout",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -113,3 +114,17 @@ autocmd("BufReadPost", {
   end,
 })
 
+autocmd("TermOpen", {
+  pattern = "*",
+  group = augroup("disable_term_line_no"),
+  command = "setlocal nonumber norelativenumber",
+})
+
+--TODO: WIP
+-- autocmdg"FileType", {
+--   pattern = "sql",
+--   group = augroup("sql_keybindings"),
+--   callback = function()
+--     vim.api.nvim_set_keymap("n", "dba", "", {})
+--   end,
+-- })

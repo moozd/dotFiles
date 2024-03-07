@@ -1,17 +1,13 @@
 return {
   {
+    desdic/telescope-rooter.nvim"
+  },
+  {
     "axelvc/template-string.nvim",
     config = function()
       require("template-string").setup()
     end,
   },
--- Lua
-   {
-     "folke/persistence.nvim",
-     event = "BufReadPre", -- this will only start session saving when an actual file was opened
-               }
-  ,
-
   {
     "chrishrb/gx.nvim",
     keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
@@ -20,18 +16,19 @@ return {
       vim.g.netrw_nogx = 1 -- disable netrw gx
     end,
     dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,      -- default settings
     submodules = false, -- not needed, submodules are required only for tests
 
     -- you can specify also another config if you want
     config = function()
       require("gx").setup({
-        open_browser_app = "open", -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
+        open_browser_app = "open",              -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
         handlers = {
-          plugin = true,           -- open plugin links in lua (e.g. packer, lazy, ..)
-          github = true,           -- open github issues
-          brewfile = true,         -- open Homebrew formulaes and casks
-          package_json = true,     -- open dependencies from package.json
-          search = true,           -- search the web/selection on the web if nothing else is found
+          plugin = true,                        -- open plugin links in lua (e.g. packer, lazy, ..)
+          github = true,                        -- open github issues
+          brewfile = true,                      -- open Homebrew formulaes and casks
+          package_json = true,                  -- open dependencies from package.json
+          search = true,                        -- search the web/selection on the web if nothing else is found
         },
         handler_options = {
           search_engine = "google", -- you can select between google, bing, duckduckgo, and ecosia
@@ -171,12 +168,7 @@ return {
     opts = {
       options = {
         custom_commentstring = function()
-          local prefix = require("ts_context_commentstring.internal").calculate_commentstring()
-              or vim.bo.commentstring
-          if vim.o.filetype == "sql" then
-            prefix = "-- %s"
-          end
-          return prefix
+          return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
         end,
       },
     },

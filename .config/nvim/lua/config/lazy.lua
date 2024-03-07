@@ -14,6 +14,8 @@ require("lazy").setup({
     { "JoosepAlviste/palenightfall.nvim", lazy = false },
     -- { "rafi/awesome-vim-colorschemes", lazy = false },
     { "catppuccin/nvim", lazy = false },
+    {"folke/tokyonight.nvim", lazy=false},
+    {"agude/vim-eldar", lazy= false},
     -- { "dracula/vim",                   lazy = false },
     -- { "loctvl842/monokai-pro.nvim",    lazy = false },
     -- { "Yazeed1s/minimal.nvim",         lazy = false },

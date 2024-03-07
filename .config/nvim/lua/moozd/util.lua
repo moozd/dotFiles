@@ -73,18 +73,19 @@ M.icons = {
 }
 
 function M.create_terminal_app(opts)
-  local Terminal = require("toggleterm.terminal").Terminal
-  local t = Terminal:new(vim.tbl_deep_extend("keep", {
-    direction = "float",
-    close_on_exit = true,
-    hidden = true,
-    float_opts = {
-      border = "curved",
-    },
-  }, opts or {}))
-
+  -- local Terminal = require("toggleterm.terminal").Terminal
+  -- local t = Terminal:new(vim.tbl_deep_extend("keep", {
+  --   direction = "float",
+  --   close_on_exit = true,
+  --   hidden = true,
+  --   float_opts = {
+  --     border = "curved",
+  --   },
+  -- }, opts or {}))
+  --
   return function()
-    t:toggle()
+    vim.cmd("tabnew|term cd " )
+    -- t:toggle()
   end
 end
 
