@@ -13,7 +13,7 @@ end
 
 function M.setup()
   register(m("ChangeDirectory"), function(a)
-    cmd("silent! %bd|silent! cd" .. " " .. a["args"])
+    cmd("bufdo bwipeout |silent! cd" .. " " .. a["args"])
   end, { nargs = 1, complete = "dir", desc = "Change root directory" })
 
   register(m("GoHome"), M.compose("ChangeDirectory", vim.env.HOME),{nargs=0,desc="Home"})

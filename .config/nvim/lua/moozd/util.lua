@@ -5,11 +5,11 @@ M.source_code_ft = {
 }
 
 M.icons = {
-  Spotify="",
+  Spotify = "",
   Docker = "󰡨",
   Stats = "󱕍",
-  Jira="󰌃",
-  Redis="",
+  Jira = "󰌃",
+  Redis = "",
   ActiveLSP = "",
   ActiveTS = "",
   ArrowLeft = "",
@@ -73,19 +73,25 @@ M.icons = {
 }
 
 function M.create_terminal_app(opts)
-  -- local Terminal = require("toggleterm.terminal").Terminal
-  -- local t = Terminal:new(vim.tbl_deep_extend("keep", {
-  --   direction = "float",
-  --   close_on_exit = true,
-  --   hidden = true,
-  --   float_opts = {
-  --     border = "curved",
-  --   },
-  -- }, opts or {}))
-  --
+  local Terminal = require("toggleterm.terminal").Terminal
+  local dir = nil
+  local function build()
+    dir = opts["dir"] or vim.loop.cwd()
+    return Terminal:new(vim.tbl_deep_extend("force", {
+      direction = "float",
+      dir = dir,
+      close_on_exit = true,
+      hidden = true,
+      float_opts = {
+        border = "curved",
+      },
+    }, opts or {}))
+    --
+  end
+  local t = build()
+
   return function()
-    vim.cmd("tabnew|term cd " )
-    -- t:toggle()
+    t:toggle()
   end
 end
 

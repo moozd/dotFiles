@@ -9,13 +9,14 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
-    { "rktjmp/lush.nvim", lazy = false },
-    { "ribru17/bamboo.nvim", lazy = false },
+    { "rktjmp/lush.nvim",                 lazy = false },
+    { "ribru17/bamboo.nvim",              lazy = false },
     { "JoosepAlviste/palenightfall.nvim", lazy = false },
     -- { "rafi/awesome-vim-colorschemes", lazy = false },
-    { "catppuccin/nvim", lazy = false },
-    {"folke/tokyonight.nvim", lazy=false},
-    {"agude/vim-eldar", lazy= false},
+    { "catppuccin/nvim",                  lazy = false },
+    { "folke/tokyonight.nvim",            lazy = false },
+    { "agude/vim-eldar",                  lazy = false },
+    { "olimorris/onedarkpro.nvim",        priority = 1000 }, -- Ensure it loads first}
     -- { "dracula/vim",                   lazy = false },
     -- { "loctvl842/monokai-pro.nvim",    lazy = false },
     -- { "Yazeed1s/minimal.nvim",         lazy = false },
@@ -66,7 +67,7 @@ require("lazy").setup({
   change_detection = {
     -- automatically check for config file changes and reload the ui
     enabled = true,
-    notify = false, -- get a notification when changes are found
+    notify = false,                             -- get a notification when changes are found
   },
   checker = { enabled = true, notify = false }, -- automatically check for plugin updates
   performance = {

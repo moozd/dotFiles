@@ -2,10 +2,8 @@ import = [
   "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
-[window]
-startup_mode="FullScreen"
 
 [font]
 normal={ family= "SauceCodePro Nerd Font Mono", style="Regular"}
 offset = { x = 0, y = 0 }
-size=12
+size=16.5

@@ -16,11 +16,11 @@ end
 -- config.color_scheme = 'AdventureTime'
 
 -- and finally, return the configurat to wezterm
-config.font = wezterm.font("BlexMono Nerd Font", {
+config.font = wezterm.font("SauceCodePro Nerd Font Mono", {
 	stretch = "Expanded",
 	weight = "Regular",
 })
-config.line_height = 1.2
+-- config.line_height = 1.2
 config.default_cursor_style = "BlinkingBlock"
 
 -- config.font_size = 15

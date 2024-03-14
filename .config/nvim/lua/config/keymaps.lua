@@ -44,10 +44,30 @@ if vim.g.vscode then
   map.n["<leader>ff"] = { action("workbench.action.quickOpen") }
 else
   --- navigation ---------------------
-  map.n["<C-Tab>"] = { "<cmd>:Buffers<cr>", desc = "Find a buffer" }
+  map.n["gb"] = {
+    ":Telescope buffers theme=dropdown previewer=false<cr>",
+    desc = "buffers",
+  }
+
+  map.n["gt"] = {
+    "<cmd>Telescope telescope-tabs list_tabs  theme=dropdown previewer=false<cr>",
+    desc = Util.get_icon("DefaultFile", 1) .. "Tabs",
+  }
+
+  map.n["]t"] = { ":tabn<cr>", desc = "tab" }
+  map.n["]b"] = { ":bnext<cr>", desc = "buffer" }
+  map.n["]d"] = { vim.diagnostic.goto_next, desc = "problem" }
+  map.n["]c"] = { ":silent! GitGutterNextHunk<cr>", desc = "change" }
+  map.n["]j"] = { "<c-i>", desc = "jump" }
+
+  map.n["[t"] = { ":tabp<cr>", desc = "tab" }
+  map.n["[b"] = { ":bprev<cr>", desc = "buffer" }
+  map.n["[d"] = { vim.diagnostic.goto_prev, desc = "problem" }
+  map.n["[c"] = { ":silent! GitGutterPrevHunk<cr>", desc = "change" }
+  map.n["[j"] = { "<c-o>", desc = "jump" }
+
   ---lp
   map.n["gd"] = { vim.lsp.buf.definition, desc = "Go to definitions" }
-  -- map.n["gt"] = { vim.lsp.buf.type_definition, desc = "Go type to definitions" }
   map.n["gs"] = { vim.lsp.buf.document_symbol, desc = "Go to document symbols" }
   map.n["gS"] = { vim.lsp.buf.workspace_symbol, desc = "Go to workspace symbol" }
   map.n["gr"] = { vim.lsp.buf.references, desc = "List references" }
@@ -64,12 +84,11 @@ else
 
   map.n["X"] = { ":noh!<cr>", desc = "Cancel search" }
 
-  map.n["t="] = { ":tabnew<CR>", desc = "New" }
-  map.n["t-"] = { ":tabclose<CR>", desc = "Close" }
-  map.n["]t"] = { ":tabn<CR>", desc = "Next" }
-  map.n["[t"] = { ":tabp<CR>", desc = "Previous" }
-  map.n["[tm"] = { ":-tabmove<CR>", desc = "Move Backward" }
-  map.n["]tm"] = { ":+tabmove<CR>", desc = "Move Forward" }
+  map.n["tn"] = { ":tabnew<CR>", desc = "New tab" }
+  map.n["tc"] = { ":tabclose<CR>", desc = "Close tab" }
+
+  map.n["<t"] = { ":-tabmove<CR>", desc = "Move Backward" }
+  map.n[">t"] = { ":+tabmove<CR>", desc = "Move Forward" }
 
   -- map.n["<leader><Left>"] = { "<C-w>h", desc = Util.get_icon("ArrowLeft", 1) .. "Left" }
   -- map.n["<leader><Down>"] = { "<C-w>j", desc = Util.get_icon("ArrowDown", 1) .. "Down" }
@@ -89,23 +108,13 @@ else
   --- overall-------------------------
 
   -- stylua: ignore
-  map.n["<Tab><Tab>"] = {
-    "<cmd>Telescope buffers theme=dropdown previewer=false<cr>",
-    desc = Util.get_icon("DefaultFile", 1) .. "Buffers"
-  }
-  map.n["<leader><Space>"] = {
-    "<cmd>Telescope telescope-tabs list_tabs  theme=dropdown previewer=false<cr>",
-    desc = Util.get_icon("DefaultFile", 1) .. "Tabs",
-    key,
-  }
+
 
   map.n["<leader>x"] = { "<cmd>bdelete<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
   map.n["<leader>X"] = { Util.close_all_but_this, desc = Util.get_icon("BufferClose", 1) .. "Close All" }
   map.n["<leader>w"] = { "<cmd>w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" }
   map.n["<leader>W"] = { "<cmd>wa<cr>", desc = Util.get_icon("Session", 1) .. "Save All" }
   map.n["<leader>;"] = { "<cmd>buf #<cr>", desc = Util.get_icon("Bookmarks", 1) .. "Switch" }
-  map.n["<leader>]"] = { "<cmd>bnext<cr>", desc = Util.get_icon("ArrowRight", 1) .. "Next" }
-  map.n["<leader>["] = { "<cmd>bprev<cr>", desc = Util.get_icon("ArrowLeft", 1) .. "Prev" }
   map.n["<leader>T"] = { "<cmd>silent! TagbarToggle<cr>", desc = Util.get_icon("Tab", 1) .. "Tags" }
   map.n["<leader>p"] = {
     function()
@@ -122,18 +131,16 @@ else
   map.n["<leader>H"] = { "<cmd>" .. ucmd("GoHome") .. "<cr>", desc = "Home" }
   map.n["<leader>S"] = {
     "<cmd>"
-      .. ucmd("ChangeDirectory", vim.env.HOME .. "/.config/nvim")
-      .. "| e "
-      .. vim.env.HOME
-      .. "/.config/nvim/init.lua"
-      .. "<cr>",
+    .. ucmd("ChangeDirectory", vim.env.HOME .. "/.config/nvim")
+    .. "| e "
+    .. vim.env.HOME
+    .. "/.config/nvim/init.lua"
+    .. "<cr>",
     desc = Util.get_icon("ActiveLSP", 1) .. "Settings",
   }
 
   --- terminal -----------------------
-  map.n["<C-`>"] = { "<cmd>ToggleTerm<cr>", desc = Util.get_icon("Terminal", 1) .. "Terminal" }
-  map.t["<ESC><ESC>"] = { "<c-\\><c-n>", desc = "Enter Normal Mode" }
-  map.t["<C-ESC>"] = { "<cmd>close<cr>", desc = "Hide Terminal" }
+  map.n["gT"] = { "<cmd>ToggleTerm direction=vertical size=100<cr>", desc = Util.get_icon("Terminal", 1) .. "Terminal" }
 
   --- menu--------------------------
   local sections = {
@@ -153,8 +160,7 @@ else
   map.n["<leader>sd"] = { '<cmd>lua require("persistence").load()<cr>', desc = "Current directory." }
 
   --- Explorer ---------------------------
-  map.n["<leader>e"] =
-    { "<cmd>Neotree focus toggle position=float<cr>", desc = Util.get_icon("Explorer", 1) .. "Explorer" }
+  map.n["<leader>e"] = { "<cmd>Neotree focus toggle <cr>", desc = Util.get_icon("Explorer", 1) .. "Explorer" }
 
   --- Git --------------------------------
   map.n["<leader>g"] = sections.g
@@ -163,22 +169,19 @@ else
   map.n["<leader>gb"] = { "<cmd>Git blame<cr>", desc = "Blame" }
 
   --- Apps -------------------------------
-  -- map.n["<leader>a"] = sections.a
-  -- map.n["<leader>ae"] = { "<cmd>Neotree position=float<cr>", desc = Util.get_icon("FolderOpen", 1) .. "Explorer" }
-  -- map.n["<leader>ag"] = { Apps.lazygit, desc = Util.get_icon("Git", 1) .. "Git" }
-  -- map.n["<leader>at"] = { Apps.terminal, desc = Util.get_icon("Terminal", 1) .. "Terminal" }
-  -- map.n["<leader>ad"] = { Apps.lazydocker, desc = Util.get_icon("Docker", 1) .. "Docker" }
-  -- map.n["<leader>as"] = { Apps.btm, desc = Util.get_icon("Stats", 1) .. "Stats" }
-  -- map.n["<leader>am"] = { Apps.spotify, desc = Util.get_icon("Spotify", 1) .. "Spotify" }
-  -- map.n["<leader>ab"] = { "<cmd>ToggleTerm<cr>", desc = "  Bottom Terminal" }
+  map.n["<leader>a"] = sections.a
+  map.n["<leader>ag"] = { Apps.lazygit, desc = Util.get_icon("Git", 1) .. "Git" }
+  map.n["<leader>ae"] = { Apps.ranger, desc = Util.get_icon("FolderOpen", 1) .. "Explorer" }
+  map.n["<leader>at"] = { Apps.terminal, desc = Util.get_icon("Terminal", 1) .. "Terminal" }
+  map.n["<leader>ad"] = { Apps.lazydocker, desc = Util.get_icon("Docker", 1) .. "Docker" }
+  map.n["<leader>as"] = { Apps.btm, desc = Util.get_icon("Stats", 1) .. "Stats" }
+  map.n["<leader>am"] = { Apps.spotify, desc = Util.get_icon("Spotify", 1) .. "Spotify" }
+  map.n["<leader>ab"] = { "<cmd>ToggleTerm<cr>", desc = "  Bottom Terminal" }
   --
   --- Diagnostic --------------------------
 
   map.n["<leader>d"] = sections.d
   -- stylua: ignore
-  map.n["<leader>d]"] = { function() vim.diagnostic.goto_next() end, desc = "Goto next diagnostic" }
-  -- stylua: ignore
-  map.n["<leader>d["] = { function() vim.diagnostic.goto_prev() end, desc = "Goto previous diagnostic" }
   map.n["<leader>dd"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Diagnostics" }
 
   --- find --------------------------
@@ -191,10 +194,8 @@ else
   map.n["<leader>fz"] = { "<cmd>:Files<cr>", desc = "Find (FZF)" }
   map.n["<leader>fw"] = { "<cmd>Telescope live_grep <cr>", desc = "Find words" }
   map.n["<leader>ft"] = { "<cmd>TodoTelescope<cr>", desc = "TODOS" }
-  map.n["<leader>fd"] =
-    { "<cmd>Telescope lsp_document_symbols theme=dropdown previewer=false<cr>", desc = "Find symbols" }
-  map.n["<leader>fD"] =
-    { "<cmd>Telescope lsp_workspace_symbols theme=dropdown previewer=false<cr>", desc = "Find project symbols" }
+  map.n["<leader>fd"] = { ":Telescope lsp_document_symbols <cr>", desc = "Find symbols" }
+  map.n["<leader>fD"] = { ":Telescope lsp_workspace_symbols <cr>", desc = "Find project symbols" }
 
   --- code --------------------------
   map.n["<leader>c"] = sections.c

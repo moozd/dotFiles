@@ -4,7 +4,6 @@ require("config.lazy")
 require("config.autocmds")
 require("config.commands").setup()
 require("config.keymaps")
-
 -- vim.cmd.colorscheme("minimal")
 -- vim.cmd.colorscheme("sonokai")
 vim.cmd.colorscheme("catppuccin-mocha")
