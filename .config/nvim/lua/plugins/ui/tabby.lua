@@ -1,7 +1,7 @@
 return function()
   local palette = {
-    accent = "#ccd6f4",     -- orange
-    accent_sec = "#323232", -- fg4
+    accent = "#a6e3a1",     -- orange
+    accent_sec = "#1e1e2e", -- fg4
     bg = "#1e1e2e",         -- bg1
     fg = "#c7c7c7",         -- fg3
     fg_sec = "#1e1e2e",     -- bg2
