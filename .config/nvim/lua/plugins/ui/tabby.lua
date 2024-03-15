@@ -1,11 +1,11 @@
 return function()
   local palette = {
-    accent = "#ccd6f4", -- orange
+    accent = "#ccd6f4",     -- orange
     accent_sec = "#323232", -- fg4
-    bg = "#1e1e2e", -- bg1
-    fg = "#c7c7c7", -- fg3
-    fg_sec = "#1e1e2e", -- bg2
-    bg_sec = "#89b4fa", -- fg2
+    bg = "#1e1e2e",         -- bg1
+    fg = "#c7c7c7",         -- fg3
+    fg_sec = "#1e1e2e",     -- bg2
+    bg_sec = "#89b4fa",     -- fg2
     bg_buf_sec = "#a6e3a1",
     fg_buf_sec = "#1e1e2e",
   }
@@ -18,7 +18,8 @@ return function()
     hl = { fg = palette.fg, bg = palette.bg },
     layout = "active_wins_at_tail",
     head = {
-      { " ", hl = { fg = palette.accent, bg = palette.bg } },
+      { " 󰖯 ", hl = { fg = palette.accent, bg = palette.accent_sec } },
+      { " ", hl = { fg = palette.accent_sec, bg = palette.bg } },
     },
     active_tab = {
       label = function(tabid)
@@ -79,8 +80,8 @@ return function()
       right_sep = { " ", hl = { fg = palette.fg, bg = palette.bg } },
     },
     tail = {
-      { "", hl = { fg = palette.accent_sec, bg = palette.bg } },
-      { "  ", hl = { fg = palette.accent, bg = palette.accent_sec } },
+      { " ", hl = { fg = palette.accent_sec, bg = palette.bg } },
+      { "  ", hl = { fg = palette.accent, bg = palette.accent_sec } },
     },
   }
   require("tabby").setup({ tabline = line })

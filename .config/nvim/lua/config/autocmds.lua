@@ -46,6 +46,42 @@ autocmd("BufWritePost", {
   end,
 })
 
+autocmd("CmdlineLeave", {
+  desc = "Clear command line.",
+  group = augroup("clear_command_line"),
+  callback = function()
+    --just fun
+
+    vim.defer_fn(function()
+      vim.cmd('echo " 󰦑.󰵿....... "')
+    end, 100)
+    vim.defer_fn(function()
+      vim.cmd('echo " 󰦑..󰵿...... "')
+    end, 150)
+    vim.defer_fn(function()
+      vim.cmd('echo " 󰦑....󰵿.... "')
+    end, 200)
+    vim.defer_fn(function()
+      vim.cmd('echo " 󰦑.....󰵿... "')
+    end, 350)
+    vim.defer_fn(function()
+      vim.cmd('echo " 󰦑......󰵿.. "')
+    end, 400)
+    vim.defer_fn(function()
+      vim.cmd('echo " 󰦑.......󰵿. "')
+    end, 450)
+    vim.defer_fn(function()
+      vim.cmd('echo " 󰦑........󰵿 "')
+    end, 500)
+    vim.defer_fn(function()
+      vim.cmd('echo " 󰦑......... "')
+    end, 550)
+    vim.defer_fn(function()
+      vim.cmd('echo ""')
+    end, 800)
+  end,
+})
+
 -- close some filetypes with <q>
 autocmd("FileType", {
   group = augroup("close_with_q"),
