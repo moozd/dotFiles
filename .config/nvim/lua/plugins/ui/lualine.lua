@@ -1,22 +1,46 @@
 return function()
+  local catppuccin = require("lualine.themes.catppuccin")
+
+  catppuccin["inactive"]["a"]["bg"] = "#1e1e2e"
+  catppuccin["inactive"]["b"]["bg"] = "#1e1e2e"
+  catppuccin["inactive"]["c"]["bg"] = "#1e1e2e"
+  catppuccin["normal"]["c"]["bg"] = "#1e1e2e"
+
   require("lualine").setup({
     options = {
-      theme = "catppuccin",
+      theme = catppuccin,
       globalstatus = true,
       component_separators = "",
       section_separators = { left = "", right = "" },
     },
     sections = {
-      lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
-      lualine_b = {  "branch" },
+      lualine_a = { { "mode", separator = { left = " ", right = " " }, right_padding = 2 } },
+      lualine_b = { { "branch", separator = {  right = " " } } },
       lualine_c = {
         "%=", --[[ add your center compoentnts here in place of this comment ]]
-        { "filename", path = 1 }
+        "cwd",
+        { "filename", path = 1 },
       },
       lualine_x = {},
-      lualine_y = { "filetype", "progress" },
+      lualine_y = {
+        -- {
+        --   "fileformat",
+        --   icons_enabled = true,
+        --   symbols = {
+        --     unix = "LF",
+        --     dos = "CRLF",
+        --     mac = "CR",
+        --   },
+        -- },
+        -- "encoding",
+        {
+          "filetype",
+          separator = { left = " " },
+        },
+        {"progress" ,separator = { left = " " }},
+      },
       lualine_z = {
-        { "location", separator = { right = "" }, left_padding = 2 },
+        { "location", separator = { left = " ", right = " " }, left_padding = 2 },
       },
     },
     inactive_sections = {

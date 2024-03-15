@@ -50,7 +50,7 @@ else
   }
 
   map.n["gt"] = {
-    "<cmd>Telescope telescope-tabs list_tabs  theme=dropdown previewer=false<cr>",
+    ":Telescope telescope-tabs list_tabs  theme=dropdown previewer=false<cr>",
     desc = Util.get_icon("DefaultFile", 1) .. "Tabs",
   }
 
@@ -94,15 +94,15 @@ else
   -- map.n["<leader><Down>"] = { "<C-w>j", desc = Util.get_icon("ArrowDown", 1) .. "Down" }
   -- map.n["<leader><Up>"] = { "<C-w>k", desc = Util.get_icon("ArrowUp", 1) .. "Up" }
   -- map.n["<leader><Right>"] = { "<C-w>l", desc = Util.get_icon("ArrowRight", 1) .. "Right" }
-  map.n["<PageUp>"] = { "<cmd>resize +1<CR>", desc = "Resize split up" }
-  map.n["<PageDown>"] = { "<cmd>resize -1<CR>", desc = "Resize split down" }
-  map.n["<C-PageDown>"] = { "<cmd>vertical resize +1<CR>", desc = "Resize split left" }
-  map.n["<C-PageUp>"] = { "<cmd>vertical resize -1<CR>", desc = "Resize split right" }
+  map.n["<PageUp>"] = { ":resize +1<CR>", desc = "Resize split up" }
+  map.n["<PageDown>"] = { ":resize -1<CR>", desc = "Resize split down" }
+  map.n["<C-PageDown>"] = { ":vertical resize +1<CR>", desc = "Resize split left" }
+  map.n["<C-PageUp>"] = { ":vertical resize -1<CR>", desc = "Resize split right" }
   --
-  map.n["<M-UP>"] = { "<cmd>m-2<cr>", desc = "Move line up" }
+  map.n["<M-UP>"] = { ":m-2<cr>", desc = "Move line up" }
   map.i["<M-UP>"] = { "<cmd>m-2<cr>", desc = "Move line up" }
 
-  map.n["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
+  map.n["<M-Down>"] = { ":m+1<cr>", desc = "Move line down" }
   map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 
   --- overall-------------------------
@@ -110,12 +110,12 @@ else
   -- stylua: ignore
 
 
-  map.n["<leader>x"] = { "<cmd>bdelete<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
+  map.n["<leader>x"] = { ":bdelete<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
   map.n["<leader>X"] = { Util.close_all_but_this, desc = Util.get_icon("BufferClose", 1) .. "Close All" }
-  map.n["<leader>w"] = { "<cmd>w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" }
-  map.n["<leader>W"] = { "<cmd>wa<cr>", desc = Util.get_icon("Session", 1) .. "Save All" }
-  map.n["<leader>;"] = { "<cmd>buf #<cr>", desc = Util.get_icon("Bookmarks", 1) .. "Switch" }
-  map.n["<leader>T"] = { "<cmd>silent! TagbarToggle<cr>", desc = Util.get_icon("Tab", 1) .. "Tags" }
+  map.n["<leader>w"] = { ":w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" }
+  map.n["<leader>W"] = { ":wa<cr>", desc = Util.get_icon("Session", 1) .. "Save All" }
+  map.n["<leader>;"] = { ":buf #<cr>", desc = Util.get_icon("Bookmarks", 1) .. "Switch" }
+  map.n["<leader>T"] = { ":silent! TagbarToggle<cr>", desc = Util.get_icon("Tab", 1) .. "Tags" }
   map.n["<leader>p"] = {
     function()
       local path = vim.loop.cwd()
@@ -128,19 +128,19 @@ else
     expr = true,
   }
 
-  map.n["<leader>H"] = { "<cmd>" .. ucmd("GoHome") .. "<cr>", desc = "Home" }
+  map.n["<leader>H"] = { ":" .. ucmd("GoHome") .. "<cr>", desc = "Home" }
   map.n["<leader>S"] = {
-    "<cmd>"
-    .. ucmd("ChangeDirectory", vim.env.HOME .. "/.config/nvim")
-    .. "| e "
-    .. vim.env.HOME
-    .. "/.config/nvim/init.lua"
-    .. "<cr>",
+    ":"
+      .. ucmd("ChangeDirectory", vim.env.HOME .. "/.config/nvim")
+      .. "| e "
+      .. vim.env.HOME
+      .. "/.config/nvim/init.lua"
+      .. "<cr>",
     desc = Util.get_icon("ActiveLSP", 1) .. "Settings",
   }
 
   --- terminal -----------------------
-  map.n["gT"] = { "<cmd>ToggleTerm direction=vertical size=100<cr>", desc = Util.get_icon("Terminal", 1) .. "Terminal" }
+  map.n["gT"] = { ":ToggleTerm direction=vertical size=100<cr>", desc = Util.get_icon("Terminal", 1) .. "Terminal" }
 
   --- menu--------------------------
   local sections = {
@@ -156,17 +156,17 @@ else
 
   --- Sessions --------------------------
   map.n["<leader>s"] = sections.s
-  map.n["<leader>sl"] = { '<cmd>lua require("persistence").load({ last = true })<cr>', desc = "Last session." }
-  map.n["<leader>sd"] = { '<cmd>lua require("persistence").load()<cr>', desc = "Current directory." }
+  map.n["<leader>sl"] = { ':lua require("persistence").load({ last = true })<cr>', desc = "Last session." }
+  map.n["<leader>sd"] = { ':lua require("persistence").load()<cr>', desc = "Current directory." }
 
   --- Explorer ---------------------------
-  map.n["<leader>e"] = { "<cmd>Neotree focus toggle <cr>", desc = Util.get_icon("Explorer", 1) .. "Explorer" }
+  map.n["<leader>e"] = { ":Neotree focus toggle <cr>", desc = Util.get_icon("Explorer", 1) .. "Explorer" }
 
   --- Git --------------------------------
   map.n["<leader>g"] = sections.g
-  map.n["<leader>gd"] = { "<cmd>Gdiffsplit<cr>", desc = "Diff" }
-  map.n["<leader>gc"] = { "<cmd>BCommits<cr>", desc = "Commits" }
-  map.n["<leader>gb"] = { "<cmd>Git blame<cr>", desc = "Blame" }
+  map.n["<leader>gd"] = { ":Gdiffsplit<cr>", desc = "Diff" }
+  map.n["<leader>gc"] = { ":BCommits<cr>", desc = "Commits" }
+  map.n["<leader>gb"] = { ":Git blame<cr>", desc = "Blame" }
 
   --- Apps -------------------------------
   map.n["<leader>a"] = sections.a
@@ -176,24 +176,24 @@ else
   map.n["<leader>ad"] = { Apps.lazydocker, desc = Util.get_icon("Docker", 1) .. "Docker" }
   map.n["<leader>as"] = { Apps.btm, desc = Util.get_icon("Stats", 1) .. "Stats" }
   map.n["<leader>am"] = { Apps.spotify, desc = Util.get_icon("Spotify", 1) .. "Spotify" }
-  map.n["<leader>ab"] = { "<cmd>ToggleTerm<cr>", desc = "  Bottom Terminal" }
+  map.n["<leader>ab"] = { ":ToggleTerm<cr>", desc = "  Bottom Terminal" }
   --
   --- Diagnostic --------------------------
 
   map.n["<leader>d"] = sections.d
   -- stylua: ignore
-  map.n["<leader>dd"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Diagnostics" }
+  map.n["<leader>dd"] = { ":TroubleToggle workspace_diagnostics<cr>", desc = "Diagnostics" }
 
   --- find --------------------------
   map.n["<leader>f"] = sections.f
-  map.n["<leader>fs"] = { "<cmd>Ag<cr>", desc = "Search" }
-  map.n["<leader>fS"] = { "<cmd>Spectre <cr>", desc = "Replace" }
-  map.n["<leader>ff"] = { "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find (Telescope)" }
-  map.n["<leader>fo"] = { "<cmd>Telescope oldfiles <cr>", desc = "Recent files (Telescope)" }
-  map.n["<leader>fm"] = { "<cmd>Telescope marks <cr>", desc = "Marks(Telescope)" }
-  map.n["<leader>fz"] = { "<cmd>:Files<cr>", desc = "Find (FZF)" }
-  map.n["<leader>fw"] = { "<cmd>Telescope live_grep <cr>", desc = "Find words" }
-  map.n["<leader>ft"] = { "<cmd>TodoTelescope<cr>", desc = "TODOS" }
+  map.n["<leader>fs"] = { ":Ag<cr>", desc = "Search" }
+  map.n["<leader>fS"] = { ":Spectre <cr>", desc = "Replace" }
+  map.n["<leader>ff"] = { ":Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find (Telescope)" }
+  map.n["<leader>fo"] = { ":Telescope oldfiles <cr>", desc = "Recent files (Telescope)" }
+  map.n["<leader>fm"] = { ":Telescope marks <cr>", desc = "Marks(Telescope)" }
+  map.n["<leader>fz"] = { ":Files<cr>", desc = "Find (FZF)" }
+  map.n["<leader>fw"] = { ":Telescope live_grep <cr>", desc = "Find words" }
+  map.n["<leader>ft"] = { ":TodoTelescope<cr>", desc = "TODOS" }
   map.n["<leader>fd"] = { ":Telescope lsp_document_symbols <cr>", desc = "Find symbols" }
   map.n["<leader>fD"] = { ":Telescope lsp_workspace_symbols <cr>", desc = "Find project symbols" }
 
@@ -202,14 +202,14 @@ else
   map.n["<leader>cf"] = { vim.lsp.buf.format, desc = "Format" }
   map.n["<leader>cr"] = { vim.lsp.buf.rename, desc = "Rename" }
   map.n["<leader>cc"] = { vim.lsp.buf.code_action, desc = "Code actions" }
-  map.n["<leader>ct"] = { "<cmd>TestSuite<cr>", desc = "Run tests" }
+  map.n["<leader>ct"] = { ":TestSuite<cr>", desc = "Run tests" }
 
   --- LeetCode ----------------------
   map.n["<leader>l"] = sections.l
-  map.n["<leader>lq"] = { "<cmd>LBQuestions<cr>", desc = "List Questions" }
-  map.n["<leader>ll"] = { "<cmd>LBQuestion<cr>", desc = "View Question" }
-  map.n["<leader>lr"] = { "<cmd>LBReset<cr>", desc = "Reset Code" }
-  map.n["<leader>lt"] = { "<cmd>LBTest<cr>", desc = "Run Code" }
-  map.n["<leader>ls"] = { "<cmd>LBSubmit<cr>", desc = "Submit Code" }
+  map.n["<leader>lq"] = { ":LBQuestions<cr>", desc = "List Questions" }
+  map.n["<leader>ll"] = { ":LBQuestion<cr>", desc = "View Question" }
+  map.n["<leader>lr"] = { ":LBReset<cr>", desc = "Reset Code" }
+  map.n["<leader>lt"] = { ":LBTest<cr>", desc = "Run Code" }
+  map.n["<leader>ls"] = { ":LBSubmit<cr>", desc = "Submit Code" }
 end
 Util.setup_keymap(map)
