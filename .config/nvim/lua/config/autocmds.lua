@@ -53,17 +53,17 @@ autocmd("CmdlineLeave", {
     --just fun
 
     vim.defer_fn(function()
-      vim.cmd('echo " 󰒲     "')
+      vim.cmd('echo "   󰒲     "')
     end, 100)
     vim.defer_fn(function()
-      vim.cmd('echo "   󰉚   "')
+      vim.cmd('echo "     󰉚   "')
     end, 500)
     vim.defer_fn(function()
-      vim.cmd('echo "     󰈮 "')
+      vim.cmd('echo "       󰈮 "')
     end, 900)
 
     vim.defer_fn(function()
-      vim.cmd('echo " 󰒲 󰉚 󰈮 "')
+      vim.cmd('echo "   󰒲 󰉚 󰈮 "')
     end, 1200)
     vim.defer_fn(function()
       vim.cmd('echo ""')
