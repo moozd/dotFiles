@@ -1,3 +1,17 @@
+local lsp = require("moozd.status.lsp").lsp_client_names
+
+local function lsp_component()
+  local sources = lsp()
+  local width = vim.fn.winwidth(0)
+  if width < 50 then
+    return ""
+  end
+  if string.len(sources) == 0 then
+    return ""
+  end
+  return "( " .. sources .. " )"
+end
+
 return function()
   local catppuccin = require("lualine.themes.catppuccin")
 
@@ -5,14 +19,18 @@ return function()
   catppuccin["inactive"]["b"]["bg"] = "#1e1e2e"
   catppuccin["inactive"]["c"]["bg"] = "#1e1e2e"
   catppuccin["normal"]["c"]["bg"] = "#1e1e2e"
-  
+  catppuccin["normal"]["c"]["fg"] = "#45475a"
+
   catppuccin["normal"]["b"]["bg"] = "#1e1e2e"
   catppuccin["insert"]["b"]["bg"] = "#1e1e2e"
   catppuccin["command"]["b"]["bg"] = "#1e1e2e"
   catppuccin["terminal"]["b"]["bg"] = "#1e1e2e"
   catppuccin["visual"]["b"]["bg"] = "#1e1e2e"
   catppuccin["replace"]["b"]["bg"] = "#1e1e2e"
+
+  catppuccin["inactive"]["a"]["bg"] = "#1e1e2e"
   catppuccin["inactive"]["b"]["bg"] = "#1e1e2e"
+  catppuccin["inactive"]["c"]["bg"] = "#1e1e2e"
 
   require("lualine").setup({
     options = {
@@ -22,33 +40,20 @@ return function()
       section_separators = { left = "", right = "" },
     },
     sections = {
-      lualine_a = { { "mode", separator = { left = " ", right = " " }, right_padding = 2 } },
-      lualine_b = { { "branch", separator = { right = " " } } },
+      lualine_a = { { "mode", separator = { left = "", right = "" } } },
+      lualine_b = { "branch" },
       lualine_c = {
         "%=", --[[ add your center compoentnts here in place of this comment ]]
-        "cwd",
-        { "filename", path = 1 },
       },
-      lualine_x = {},
+      lualine_x = {
+        { "filetype", colored = false },
+        lsp_component,
+      },
       lualine_y = {
-        -- {
-        --   "fileformat",
-        --   icons_enabled = true,
-        --   symbols = {
-        --     unix = "LF",
-        --     dos = "CRLF",
-        --     mac = "CR",
-        --   },
-        -- },
-        -- "encoding",
-        {
-          "filetype",
-          separator = { left = " " },
-        },
-        { "progress", separator = { left = " " } },
+        "progress",
       },
       lualine_z = {
-        { "location", separator = { left = " ", right = " " }, left_padding = 2 },
+        {"location",separator = { left = "", right = "" }},
       },
     },
     inactive_sections = {

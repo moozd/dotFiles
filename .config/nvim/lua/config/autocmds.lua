@@ -46,28 +46,20 @@ autocmd("BufWritePost", {
   end,
 })
 
-autocmd("CmdlineLeave", {
-  desc = "Clear command line.",
-  group = augroup("clear_command_line"),
+autocmd("CmdlineEnter", {
+  desc = "Open command line",
+  group = augroup("open_command_line"),
   callback = function()
-    --just fun
+    vim.o.cmdheight = 1
+  end,
+})
 
-    vim.defer_fn(function()
-      vim.cmd('echo "   󰒲     "')
-    end, 100)
-    vim.defer_fn(function()
-      vim.cmd('echo "     󰉚   "')
-    end, 500)
-    vim.defer_fn(function()
-      vim.cmd('echo "       󰈮 "')
-    end, 900)
-
-    vim.defer_fn(function()
-      vim.cmd('echo "   󰒲 󰉚 󰈮 "')
-    end, 1200)
-    vim.defer_fn(function()
-      vim.cmd('echo ""')
-    end, 1800)
+autocmd("CmdlineLeave", {
+  desc = "Close command line",
+  group = augroup("close_command_line"),
+  callback = function()
+    vim.o.cmdheight = 0
+     vim.cmd('echo ""')
   end,
 })
 

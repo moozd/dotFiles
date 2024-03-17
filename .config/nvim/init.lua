@@ -19,3 +19,7 @@ vim.cmd("highlight IlluminatedWordRead cterm=NONE gui=NONE  guibg=#393b4e")
 vim.cmd("highlight IlluminatedWordText cterm=NONE gui=NONE  guibg=#393b4e")
 vim.cmd("highlight IlluminatedWordWrite cterm=NONE gui=NONE guibg=#393b4e")
 -- vim.cmd("highlight BufferLineFill guibg=#2c2e34")
+--
+--
+--
+--

@@ -4,11 +4,11 @@ vim.g.maplocalleader = "\\"
 vim.g.molokai_original = 1
 
 vim.o.showtabline = 2
-vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
+vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
 --vim.g.LanguageClient_serverCommands =={'sql'= { "sql-language-server", "up", "--method", "stdio" }}
 
 if vim.g.neovide then
-  vim.g.neovide_fullscreen=1
+  vim.g.neovide_fullscreen = 1
 end
 
 local opt = vim.opt
@@ -55,8 +55,7 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5                -- Minimum window width
 opt.wrap = false                   -- Disable line wrap
 
-opt.cmdheight = 1
-
+opt.cmdheight = 0
 
 if vim.fn.has("nvim-0.9.0") == 1 then
   opt.splitkeep = "screen"

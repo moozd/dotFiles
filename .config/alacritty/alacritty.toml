@@ -2,6 +2,9 @@ import = [
   "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
+[window]
+padding = { x = 10, y = 10 }
+
 
 [font]
 normal={ family= "SauceCodePro Nerd Font Mono", style="Regular"}
