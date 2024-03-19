@@ -1,43 +1,16 @@
 local augroup = require("moozd.util").augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- Show diagnostics under the cursor when holding position
--- autocmd({ "CursorHold" }, {
---   pattern = "*",
---   group = augroup("lsp_diagnostics_hold"),
---   callback = function()
---     for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
---       if vim.api.nvim_win_get_config(winid).zindex then
---         return
---       end
---     end
---     -- THIS IS FOR BUILTIN LSP
---     vim.diagnostic.open_float({}, {
---       scope = "cursor",
---       focusable = false,
---       close_events = {
---         "CursorMoved",
---         "CursorMovedI",
---         "BufHidden",
---         "InsertCharPre",
---         "WinLeave",
---       },
---     })
---   end,
--- })
+autocmd("VimEnter", {
+  desc = "Start up",
+  group = augroup("start_up_setings"),
+  callback = function()
+    vim.defer_fn(function()
+      require("neo-tree").close_all()
+    end, 200)
+  end,
+})
 
--- autocmd("LspAttach", {
---   desc = "user_lsp_on_attach",
---   group = augroup("initialize_user_on_attach"),
---   callback = function(args)
---     local bufnr = args.buf
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---     if client.server_capabilities.documentSymbolProvider then
---       require("breadcrumb").attach(client, bufnr)
---     end
---   end,
--- })
---
 autocmd("BufWritePost", {
   desc = "Auto format after save",
   group = augroup("format_after_save"),
@@ -58,8 +31,8 @@ autocmd("CmdlineLeave", {
   desc = "Close command line",
   group = augroup("close_command_line"),
   callback = function()
+    vim.cmd('echo ""')
     vim.o.cmdheight = 0
-     vim.cmd('echo ""')
   end,
 })
 
@@ -85,6 +58,7 @@ autocmd("FileType", {
     "terminal",
     "fzf",
     "dbout",
+    "fugitiveblame",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

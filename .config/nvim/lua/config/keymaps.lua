@@ -74,6 +74,9 @@ else
   map.n["gi"] = { vim.lsp.buf.implementation, desc = "List implementations" }
   map.n["gk"] = { vim.lsp.buf.hover, desc = "Show hover help" }
   map.n["gK"] = { vim.lsp.buf.signature_help, desc = "Show signature help" }
+  map.n["<F12>"] = { "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find (Telescope)" }
+  map.n["<ESC>"] = {"<cmd>silent! noh<cr>"}
+
 
 
 
@@ -100,14 +103,13 @@ else
   map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 
   --- overall-------------------------
+-- stylua: ignore
 
-  -- stylua: ignore
 
-
-  map.n["<leader>x"] = { "<cmd>bdelete<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
+  map.n["<leader>x"] = { "<cmd>silent! bdelete<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
   map.n["<leader>X"] = { Util.close_all_but_this, desc = Util.get_icon("BufferClose", 1) .. "Close All" }
-  map.n["<leader>w"] = { "<cmd>w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" }
-  map.n["<leader>W"] = { "<cmd>wa<cr>", desc = Util.get_icon("Session", 1) .. "Save All" }
+  map.n["<leader>w"] = { "<cmd>silent! w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" ,}
+  map.n["<leader>W"] = { "<cmd>silent! wa<cr>", desc = Util.get_icon("Session", 1) .. "Save All" }
   map.n["<leader>;"] = { "<cmd>buf #<cr>", desc = Util.get_icon("Bookmarks", 1) .. "Switch" }
   map.n["<leader>T"] = { "<cmd>silent! TagbarToggle<cr>", desc = Util.get_icon("Tab", 1) .. "Tags" }
   map.n["<leader>p"] = {
@@ -125,11 +127,11 @@ else
   map.n["<leader>H"] = { "<cmd>" .. ucmd("GoHome") .. "<cr>", desc = "Home" }
   map.n["<leader>S"] = {
     "<cmd>"
-      .. ucmd("ChangeDirectory", vim.env.HOME .. "/.config/nvim")
-      .. "| e "
-      .. vim.env.HOME
-      .. "/.config/nvim/init.lua"
-      .. "<cr>",
+    .. ucmd("ChangeDirectory", vim.env.HOME .. "/.config/nvim")
+    .. "| e "
+    .. vim.env.HOME
+    .. "/.config/nvim/init.lua"
+    .. "<cr>",
     desc = Util.get_icon("ActiveLSP", 1) .. "Settings",
   }
 
@@ -200,10 +202,9 @@ else
 
   --- LeetCode ----------------------
   map.n["<leader>l"] = sections.l
-  map.n["<leader>lq"] = { "<cmd>LBQuestions<cr>", desc = "List Questions" }
-  map.n["<leader>ll"] = { "<cmd>LBQuestion<cr>", desc = "View Question" }
-  map.n["<leader>lr"] = { "<cmd>LBReset<cr>", desc = "Reset Code" }
-  map.n["<leader>lt"] = { "<cmd>LBTest<cr>", desc = "Run Code" }
-  map.n["<leader>ls"] = { "<cmd>LBSubmit<cr>", desc = "Submit Code" }
+  map.n["<leader>ld"] = { "<cmd>Leet<cr>", desc = "Dashboard" }
+  map.n["<leader>lr"] = { "<cmd>Leet run<cr>", desc = "Run" }
+  map.n["<leader>ls"] = { "<cmd>Leet submit<cr>", desc = "Submit" }
+  map.n["<leader>ll"] = { "<cmd>Leet list<cr>", desc = "Find" }
 end
 Util.setup_keymap(map)

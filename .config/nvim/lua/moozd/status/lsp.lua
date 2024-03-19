@@ -1,5 +1,4 @@
-local M = {}
-function M.null_ls_providers(filetype)
+local function get_null_ls_providers(filetype)
   local registered = {}
   -- try to load null-ls
   local sources_avail, sources = pcall(require, "null-ls.sources")
@@ -17,23 +16,19 @@ function M.null_ls_providers(filetype)
   return registered
 end
 
-function M.null_ls_sources(filetype, method)
+local function get_null_ls_sources(filetype, method)
   local methods_avail, methods = pcall(require, "null-ls.methods")
-  return methods_avail and M.null_ls_providers(filetype)[methods.internal[method]] or {}
+  return methods_avail and get_null_ls_providers(filetype)[methods.internal[method]] or {}
 end
 
-function M.lsp_client_names()
+local function lsp_client_names()
   local buf_client_names = {}
   for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
     if client.name == "null-ls" then
       local null_ls_sources = {}
       for _, type in ipairs({ "FORMATTING", "DIAGNOSTICS" }) do
-        for _, source in ipairs(M.null_ls_sources(vim.bo.filetype, type)) do
-          if(source=="cspell") then
-            goto continue
-          end
+        for _, source in ipairs(get_null_ls_sources(vim.bo.filetype, type)) do
           null_ls_sources[source] = true
-            ::continue::
         end
       end
       vim.list_extend(buf_client_names, vim.tbl_keys(null_ls_sources))
@@ -41,7 +36,30 @@ function M.lsp_client_names()
       table.insert(buf_client_names, client.name)
     end
   end
-  return table.concat(buf_client_names, "  ")
+
+  return buf_client_names
 end
 
-return M
+local opts = {
+  icon = "",
+  seprator = "  ",
+}
+
+return function()
+  local sources = lsp_client_names()
+
+  for key in pairs(sources) do
+    sources[key] = (opts.icon or "") .. " " .. sources[key]
+  end
+
+  local line = table.concat(sources, opts.seprator)
+
+  -- local width = vim.fn.winwidth(0)
+  -- if width < 50 then
+  --   return ""
+  -- end
+  if string.len(line) == 0 then
+    return ""
+  end
+  return line
+end

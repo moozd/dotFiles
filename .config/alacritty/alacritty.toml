@@ -3,10 +3,13 @@ import = [
 ]
 
 [window]
-padding = { x = 10, y = 10 }
+padding = { x = 15, y = 10 }
 
 
 [font]
 normal={ family= "SauceCodePro Nerd Font Mono", style="Regular"}
 offset = { x = 0, y = 0 }
 size=16.5
+
+[mouse]
+hide_when_typing=true
