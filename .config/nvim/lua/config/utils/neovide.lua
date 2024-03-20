@@ -1,4 +1,4 @@
-vim.g.gui_font_default_size = 15
+vim.g.gui_font_default_size = 16.5
 vim.g.gui_font_size = vim.g.gui_font_default_size
 vim.g.gui_font_face ="SauceCodePro Nerd Font Mono"
 
