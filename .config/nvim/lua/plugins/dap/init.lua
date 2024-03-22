@@ -1,8 +1,8 @@
--- NOTE: Debugging
 return {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
+      "theHamsta/nvim-dap-virtual-text",
       {
         "rcarriga/nvim-dap-ui",
         dependencies = { "nvim-neotest/nvim-nio" },
@@ -19,13 +19,10 @@ return {
     },
     config = function()
       local dap = require("dap")
-      require("dapui").setup()
-      vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
-
       local dapui = require("dapui")
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
+
+      vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+
       --
       -- require("plugins.dap.adapters.cpptools")
       -- require("plugins.dap.adapters.netcoredbg")
@@ -38,15 +35,22 @@ return {
       -- require("plugins.dap.adapters.go-debug-adapter")
       require("plugins.dap.adapters.js-debug")
 
-      require("dapui").setup()
-      local dap, dapui = require("dap"), require("dapui")
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open({ reset = true })
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-      dap.listeners.before.event_exited["dapui_config"] = dapui.close
+      dapui.setup()
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
       require("dap.ext.vscode").json_decode = require("overseer.json").decode
       require("overseer").patch_dap(true)
+      require("nvim-dap-virtual-text").setup({})
     end,
   },
 }

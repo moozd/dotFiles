@@ -138,13 +138,17 @@ else
   map.n["<leader>oc"] = { "<cmd>OverseerRunCmd<cr>", desc = "Cmd" }
 
   --- DAP ------------------------------
-  local dap = require("dap")
+  local dap, dapui = require("dap"), require("dapui")
+  map.n["<leader>d"] = sections.d
   map.n["<leader>db"] = { dap.toggle_breakpoint, desc = "Breakpoint" }
   map.n["<leader>dc"] = { dap.continue, desc = "Start/Continue" }
   map.n["<leader>do"] = { dap.step_over, desc = "Step over" }
   map.n["<leader>di"] = { dap.step_into, desc = "Step into" }
   map.n["<leader>du"] = { dap.step_out, desc = "Step out" }
   map.n["<leader>dx"] = { dap.terminate, desc = "Terminate" }
+  map.n["<leader>dd"] = { dapui.toggle, desc = "Debugger" }
+  map.n["<leader>df"] = { dapui.float_element, desc = "Float" }
+  map.v["<leader>de"] = { dapui.eval, desc = "Eval" }
 
   --- Sessions --------------------------
   local resession = require("resession")
@@ -176,7 +180,7 @@ else
 
   --- Diagnostic --------------------------
 
-  map.n["<leader>D"] = sections.d
+  map.n["<leader>D"] = sections.D
   -- stylua: ignore
   map.n["<leader>Ds"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Diagnostics" }
 
@@ -209,4 +213,5 @@ else
     map.n["<leader>ll"] = { "<cmd>Leet list<cr>", desc = "Find" }
   end
 end
+
 Util.setup_keymap(map)

@@ -1,7 +1,9 @@
+local Util = require("moozd.util")
+
 return {
   {
     "kawre/leetcode.nvim",
-    lazy=false,
+    lazy = false,
     build = ":TSUpdate html",
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -14,8 +16,9 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-     lang = "javascript"  -- configuration goes here
+      lang = "javascript", -- configuration goes here
     },
+
   },
   {
     "glacambre/firenvim",

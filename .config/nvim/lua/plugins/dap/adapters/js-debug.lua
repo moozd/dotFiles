@@ -32,15 +32,28 @@ for _, language in ipairs({ "typescript", "typescriptreact", "javascript", "java
     },
     {
       type = "pwa-chrome",
-      name = "Launch Chrome to debug client",
       request = "launch",
-      url = "http://localhost:${port}",
-      sourceMaps = true,
+      name = "Launch & Debug Chrome",
+      url = function()
+        local co = coroutine.running()
+        return coroutine.create(function()
+          vim.ui.input({
+            prompt = "Enter URL: ",
+            default = "http://localhost:3000",
+          }, function(url)
+            if url == nil or url == "" then
+              return
+            else
+              coroutine.resume(co, url)
+            end
+          end)
+        end)
+      end,
+      webRoot = vim.fn.getcwd(),
       protocol = "inspector",
-      port = 9222,
-      webRoot = "${workspaceFolder}/src",
-      -- skip files from vite's hmr
-      skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
+      sourceMaps = true,
+      userDataDir = false,
+      skipFiles = { '<node_internals>/**', 'node_modules/**' },
     },
     -- only if language is javascript, offer this debug action
     language == "javascript"
