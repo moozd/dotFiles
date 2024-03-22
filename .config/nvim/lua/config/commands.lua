@@ -1,22 +1,24 @@
-local M = {}
+local util = require("moozd.util")
 
-local register = vim.api.nvim_create_user_command
-local cmd = vim.api.nvim_command
+local commands = {}
 
-local function m(name)
-  return "UC" .. name
-end
+commands["ChangeDirectory"] = {
+  is_experimental = true,
+  opts = { nargs = 1, complete = "dir", desc = "Change root directory" },
+  fn = function(a)
+    vim.cmd("bufdo bwipeout |silent! cd" .. " " .. a["args"])
+  end,
+}
 
-function M.compose(name, args)
-  return m(name) .. " " .. (args or "")
-end
+commands["GoHome"] = {
+  is_experimental = true,
+  opts = { nargs = 0, desc = "Home" },
+  cmd = "ChangeDirectory " .. vim.env.HOME,
+}
 
-function M.setup()
-  register(m("ChangeDirectory"), function(a)
-    cmd("bufdo bwipeout |silent! cd" .. " " .. a["args"])
-  end, { nargs = 1, complete = "dir", desc = "Change root directory" })
+commands["ConfigReload"] = {
+  opts = { desc = "Hot reload nvim configuration" },
+  fn = require("moozd.config_reload").reload,
+}
 
-  register(m("GoHome"), M.compose("ChangeDirectory", vim.env.HOME),{nargs=0,desc="Home"})
-end
-
-return M
+util.setup_commands(commands)

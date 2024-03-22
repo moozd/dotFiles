@@ -1,6 +1,6 @@
-vim.g.gui_font_default_size = 16.5
+vim.g.gui_font_default_size = 16.25
 vim.g.gui_font_size = vim.g.gui_font_default_size
-vim.g.gui_font_face ="SauceCodePro Nerd Font Mono"
+vim.g.gui_font_face ="SauceCodePro Nerd Font Propo"
 
 local function refresh()
   vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
@@ -29,14 +29,14 @@ function M.setupKeybindings()
   reset()
   local opts = { noremap = true, silent = true }
   vim.keymap.set({ "n", "i" }, "<C-=>", function()
-    resize(1)
+    resize(0.25)
   end, opts)
 
   vim.keymap.set({ "n", "i" }, "<C-->", function()
-    resize(-1)
+    resize(-0.25)
   end, opts)
 
-  vim.keymap.set({ "n", "i" }, "<C-BS>", function()
+  vim.keymap.set({ "n", "i" }, "<C-0>", function()
     reset()
   end, opts)
 end

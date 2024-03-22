@@ -3,6 +3,6 @@ return function()
   if recording_register == "" then
     return ""
   else
-    return "󰿎 " .. recording_register
+    return " "  ..recording_register
   end
 end

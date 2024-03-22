@@ -1,6 +1,5 @@
 local Util = require("moozd.util")
 local Apps = require("moozd.apps")
-local ucmd = require("config.commands").compose
 
 local map = Util.empty_map_table()
 
@@ -75,7 +74,7 @@ else
   map.n["gk"] = { vim.lsp.buf.hover, desc = "Show hover help" }
   map.n["gK"] = { vim.lsp.buf.signature_help, desc = "Show signature help" }
   map.n["<F12>"] = { "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find (Telescope)" }
-  map.n["<ESC>"] = {"<cmd>silent! noh<cr>"}
+  map.n["<ESC>"] = { "<cmd>silent! noh<cr>" }
 
 
 
@@ -103,37 +102,16 @@ else
   map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 
   --- overall-------------------------
--- stylua: ignore
+  -- stylua: ignore
 
 
   map.n["<leader>x"] = { "<cmd>silent! bdelete<cr>", desc = Util.get_icon("TabClose", 1) .. "Close" }
-  map.n["<leader>X"] = { Util.close_all_but_this, desc = Util.get_icon("BufferClose", 1) .. "Close All" }
-  map.n["<leader>w"] = { "<cmd>silent! w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" ,}
-  map.n["<leader>W"] = { "<cmd>silent! wa<cr>", desc = Util.get_icon("Session", 1) .. "Save All" }
-  map.n["<leader>;"] = { "<cmd>buf #<cr>", desc = Util.get_icon("Bookmarks", 1) .. "Switch" }
-  map.n["<leader>T"] = { "<cmd>silent! TagbarToggle<cr>", desc = Util.get_icon("Tab", 1) .. "Tags" }
-  map.n["<leader>p"] = {
-    function()
-      local path = vim.loop.cwd()
-      if path == "/" then
-        path = vim.env.HOME
-      end
-      return "<cmd>" .. ucmd("ChangeDirectory", path .. "/")
-    end,
-    desc = "Open Folder",
-    expr = true,
-  }
-
-  map.n["<leader>H"] = { "<cmd>" .. ucmd("GoHome") .. "<cr>", desc = "Home" }
-  map.n["<leader>S"] = {
-    "<cmd>"
-    .. ucmd("ChangeDirectory", vim.env.HOME .. "/.config/nvim")
-    .. "| e "
-    .. vim.env.HOME
-    .. "/.config/nvim/init.lua"
-    .. "<cr>",
-    desc = Util.get_icon("ActiveLSP", 1) .. "Settings",
-  }
+  -- map.n["<leader>X"] = { Util.close_all_but_this, desc = Util.get_icon("BufferClose", 1) .. "Close All" }
+  map.n["<leader>w"] = { "<cmd>silent! w<cr>", desc = Util.get_icon("DefaultFile", 1) .. "Save" }
+  -- map.n["<leader>W"] = { "<cmd>silent! wa<cr>", desc = Util.get_icon("Session", 1) .. "Save All" }
+  -- map.n["<leader>;"] = { "<cmd>buf #<cr>", desc = Util.get_icon("Bookmarks", 1) .. "Switch" }
+  -- map.n["<leader>T"] = { "<cmd>silent! TagbarToggle<cr>", desc = Util.get_icon("Tab", 1) .. "Tags" }
+  map.n["<leader>R"] = { "<cmd>ConfigReload<cr>", desc = "Reload nvim configuration" }
 
   --- terminal -----------------------
   map.n["gT"] = { "<cmd>ToggleTerm direction=vertical size=100<cr>", desc = Util.get_icon("Terminal", 1) .. "Terminal" }
@@ -145,15 +123,36 @@ else
     c = { desc = Util.get_icon("DefaultFile", 1) .. "Code" },
     a = { desc = Util.get_icon("Terminal", 1) .. "Apps" },
     g = { desc = Util.get_icon("Git", 1) .. "Git" },
-    d = { desc = Util.get_icon("Diagnostic", 1) .. "Diagnostics" },
+    d = { desc = Util.get_icon("Debugger", 1) .. "Debugger" },
+    D = { desc = Util.get_icon("Diagnostic", 1) .. "Diagnostics" },
     l = { desc = Util.get_icon("GitUntracked", 1) .. "LeetCode" },
-    s = { desc = "Sessions" },
+    o = { desc = Util.get_icon("Package", 1) .. "Overseer" },
+    s = { desc = Util.get_icon("Session", 1) .. "Session" },
   }
 
+  map.n["<leader>o"] = sections.o
+  map.n["<leader>oo"] = { "<cmd>OverseerToggle bottom<cr>", desc = "Toggle" }
+  map.n["<leader>oi"] = { "<cmd>OverseerInfo<cr>", desc = "Info" }
+  map.n["<leader>ob"] = { "<cmd>OverseerBuild<cr>", desc = "Build" }
+  map.n["<leader>or"] = { "<cmd>OverseerRun<cr>", desc = "Run" }
+  map.n["<leader>oc"] = { "<cmd>OverseerRunCmd<cr>", desc = "Cmd" }
+
+  --- DAP ------------------------------
+  local dap = require("dap")
+  map.n["<leader>db"] = { dap.toggle_breakpoint, desc = "Breakpoint" }
+  map.n["<leader>dc"] = { dap.continue, desc = "Start/Continue" }
+  map.n["<leader>do"] = { dap.step_over, desc = "Step over" }
+  map.n["<leader>di"] = { dap.step_into, desc = "Step into" }
+  map.n["<leader>du"] = { dap.step_out, desc = "Step out" }
+  map.n["<leader>dx"] = { dap.terminate, desc = "Terminate" }
+
   --- Sessions --------------------------
+  local resession = require("resession")
+
   map.n["<leader>s"] = sections.s
-  map.n["<leader>sl"] = { ':lua require("persistence").load({ last = true })<cr>', desc = "Last session." }
-  map.n["<leader>sd"] = { ':lua require("persistence").load()<cr>', desc = "Current directory." }
+  map.n["<leader>ss"] = { resession.save, desc = "Save session." }
+  map.n["<leader>sl"] = { resession.load, desc = "Last session." }
+  map.n["<leader>sd"] = { resession.delete, desc = "Delete session." }
 
   --- Explorer ---------------------------
   map.n["<leader>e"] = { "<cmd>Neotree focus toggle <cr>", desc = Util.get_icon("Explorer", 1) .. "Explorer" }
@@ -174,11 +173,12 @@ else
   map.n["<leader>am"] = { Apps.spotify, desc = Util.get_icon("Spotify", 1) .. "Spotify" }
   map.n["<leader>ab"] = { "<cmd>ToggleTerm<cr>", desc = "  Bottom Terminal" }
   --
+
   --- Diagnostic --------------------------
 
-  map.n["<leader>d"] = sections.d
+  map.n["<leader>D"] = sections.d
   -- stylua: ignore
-  map.n["<leader>dd"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Diagnostics" }
+  map.n["<leader>Ds"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Diagnostics" }
 
   --- find --------------------------
   map.n["<leader>f"] = sections.f
@@ -201,10 +201,12 @@ else
   map.n["<leader>ct"] = { "<cmd>TestSuite<cr>", desc = "Run tests" }
 
   --- LeetCode ----------------------
-  map.n["<leader>l"] = sections.l
-  map.n["<leader>ld"] = { "<cmd>Leet<cr>", desc = "Dashboard" }
-  map.n["<leader>lr"] = { "<cmd>Leet run<cr>", desc = "Run" }
-  map.n["<leader>ls"] = { "<cmd>Leet submit<cr>", desc = "Submit" }
-  map.n["<leader>ll"] = { "<cmd>Leet list<cr>", desc = "Find" }
+  if vim.fn.argc(-1) == 0 then
+    map.n["<leader>l"] = sections.l
+    map.n["<leader>ld"] = { "<cmd>Leet<cr>", desc = "Dashboard" }
+    map.n["<leader>lr"] = { "<cmd>Leet run<cr>", desc = "Run" }
+    map.n["<leader>ls"] = { "<cmd>Leet submit<cr>", desc = "Submit" }
+    map.n["<leader>ll"] = { "<cmd>Leet list<cr>", desc = "Find" }
+  end
 end
 Util.setup_keymap(map)

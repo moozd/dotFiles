@@ -5,12 +5,7 @@ return {
       require("template-string").setup()
     end,
   },
--- Lua
-   {
-     "folke/persistence.nvim",
-     event = "BufReadPre", -- this will only start session saving when an actual file was opened
-               }
-  ,
+
 
   {
     "chrishrb/gx.nvim",
@@ -95,24 +90,6 @@ return {
       require("nvim-ts-autotag").setup({})
     end,
   },
-  {
-    "alexghergh/nvim-tmux-navigation",
-    lazy = false,
-    config = function()
-      local nvim_tmux_nav = require("nvim-tmux-navigation")
-
-      nvim_tmux_nav.setup({
-        disable_when_zoomed = true, -- defaults to false
-      })
-
-      vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-      vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-      vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-      vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-      vim.keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-      vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
-    end,
-  },
 
   {
     "NvChad/nvim-colorizer.lua",
@@ -171,8 +148,7 @@ return {
     opts = {
       options = {
         custom_commentstring = function()
-          local prefix = require("ts_context_commentstring.internal").calculate_commentstring()
-              or vim.bo.commentstring
+          local prefix = require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
           if vim.o.filetype == "sql" then
             prefix = "-- %s"
           end
@@ -186,11 +162,6 @@ return {
     config = function()
       require("inc_rename").setup()
     end,
-  },
-  {
-    "glepnir/dbsession.nvim",
-    cmd = { "SessionSave", "SessionDelete", "SessionLoad" },
-    opts = { auto_save_on_exit = true },
   },
   { "tpope/vim-fugitive" },
   {

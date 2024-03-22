@@ -28,7 +28,9 @@ local function lsp_client_names()
       local null_ls_sources = {}
       for _, type in ipairs({ "FORMATTING", "DIAGNOSTICS" }) do
         for _, source in ipairs(get_null_ls_sources(vim.bo.filetype, type)) do
-          null_ls_sources[source] = true
+          if (source ~= 'cspell') then
+            null_ls_sources[source] = true
+          end
         end
       end
       vim.list_extend(buf_client_names, vim.tbl_keys(null_ls_sources))

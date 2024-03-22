@@ -247,4 +247,24 @@ function M.is_available(plugin)
   return lazy_config_avail and lazy_config.spec.plugins[plugin] ~= nil
 end
 
+function M.setup_commands(commands)
+  local create = vim.api.nvim_create_user_command
+
+  for cmd_name, def in pairs(commands) do
+    local name = cmd_name
+
+    if def.is_experimental then
+      name = "Experimental" .. name
+    end
+
+    local action = def.fn or def.cmd or function()
+      print("Empty command:" .. name)
+    end
+
+    local opts = vim.tbl_deep_extend("force", { desc = name }, def.opts)
+
+    create(name, action, opts)
+  end
+end
+
 return M

@@ -6,7 +6,7 @@ return {
       "antoinemadec/telescope-git-browse.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
       "lewis6991/gitsigns.nvim",
-
+      "camgraff/telescope-tmux.nvim",
       "radyz/telescope-gitsigns",
     },
     config = function()
@@ -19,6 +19,7 @@ return {
       telescope.load_extension("file_browser")
       telescope.load_extension("git_browse")
       telescope.load_extension("git_signs")
+      telescope.load_extension("tmux")
     end,
   },
 

@@ -110,16 +110,7 @@ return {
       select = { backend = { "telescope", "builtin" } },
     },
   },
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = true,
-    ops = {
-      float_opts = {
-        border = "curved",
-      },
-    },
-  },
+
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",

@@ -10,9 +10,9 @@ local function get_mode()
   end
 
   local icons = {
-    N = "",
+    N = "󰅶",
     V = "",
-    VL = "",
+    VL = "󰦩",
     VB = "󰹞",
     C = "󱩡",
     T = "󰘔",
@@ -34,13 +34,17 @@ end
 
 local M = {}
 
+function M.abbr_with_icon()
+  local m = get_mode()
+  return m.icon .. " " .. m.abbr
+end
+
 function M.icon()
   return get_mode().icon
 end
 
-
-function M.abbr() 
-return get_mode().abbr
+function M.abbr()
+  return get_mode().abbr
 end
 
 return M

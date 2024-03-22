@@ -49,7 +49,6 @@ local function setup_lsp()
     },
   })
 
-  require("mason-nvim-dap").setup({})
 end
 
 return {
@@ -61,8 +60,6 @@ return {
       "jose-elias-alvarez/null-ls.nvim",
       "jay-babu/mason-null-ls.nvim",
       "davidmh/cspell.nvim",
-      "mfussenegger/nvim-dap",
-      "jay-babu/mason-nvim-dap.nvim",
     },
     config = setup_lsp,
   },

@@ -42,23 +42,24 @@ return function()
     options = {
       theme = catppuccin,
       globalstatus = true,
+      section_separators = "",
       component_separators = "",
-      section_separators = { left = "", right = "" },
-      -- disabled_filetypes = {
-      --   statusline = { "neo-tree" },
-      -- },
     },
     sections = {
       lualine_a = {},
       lualine_b = {
+        mode.abbr_with_icon,
         "branch",
       },
       lualine_c = {
         "%=", --[[ add your center compoentnts here in place of this comment ]]
+        macro,
+        selection_count,
+        search_count,
       },
       lualine_x = {
         lsp,
-        project,
+        "overseer",
         {
           "diff",
           colored = true,
@@ -80,17 +81,12 @@ return function()
         },
       },
       lualine_y = {
-        selection_count,
-        search_count,
-        macro,
-        { "filetype", colored = true },
         "progress",
         "location",
-        mode.abbr,
+        { "filetype", colored = true },
+        project,
       },
-      lualine_z = {
-        mode.icon,
-      },
+      lualine_z = {},
     },
     inactive_sections = {
       lualine_a = { "filename" },

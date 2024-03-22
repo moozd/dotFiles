@@ -4,11 +4,7 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd("VimEnter", {
   desc = "Start up",
   group = augroup("start_up_setings"),
-  callback = function()
-    vim.defer_fn(function()
-      require("neo-tree").close_all()
-    end, 200)
-  end,
+  callback = function() end,
 })
 
 autocmd("BufWritePost", {
@@ -110,6 +106,8 @@ autocmd("TermOpen", {
   group = augroup("disable_term_line_no"),
   command = "setlocal nonumber norelativenumber",
 })
+
+
 
 --TODO: WIP
 -- autocmdg"FileType", {
