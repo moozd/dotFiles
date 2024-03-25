@@ -1,0 +1,8 @@
+# /Users/zaadee/.config/tmuxinator/hubby.yml
+
+name: hubby
+root: ~/Github/anaegina
+windows:
+  - editor: nvim
+  - git: lazygit
+  - app: yarn start

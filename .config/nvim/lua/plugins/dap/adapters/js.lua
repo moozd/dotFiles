@@ -3,6 +3,21 @@ require("dap-vscode-js").setup({
   adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 })
 
+local pwa_chrome_url = function()
+  local co = coroutine.running()
+  return coroutine.create(function()
+    vim.ui.input({
+      prompt = "Enter URL: ",
+      default = "http://localhost:3000",
+    }, function(url)
+      if url == nil or url == "" then
+        return
+      end
+      coroutine.resume(co, url)
+    end)
+  end)
+end
+
 for _, language in ipairs({ "typescript", "typescriptreact", "javascript", "javascriptreact", "svelte" }) do
   require("dap").configurations[language] = {
     -- attach to a node process that has been started with
@@ -34,25 +49,16 @@ for _, language in ipairs({ "typescript", "typescriptreact", "javascript", "java
       type = "pwa-chrome",
       request = "launch",
       name = "Launch & Debug Chrome",
-      url = function()
-        local co = coroutine.running()
-        return coroutine.create(function()
-          vim.ui.input({
-            prompt = "Enter URL: ",
-            default = "http://localhost:3000",
-          }, function(url)
-            if url == nil or url == "" then
-              return
-            end
-              coroutine.resume(co, url)
-          end)
-        end)
-      end,
+      url = pwa_chrome_url,
       webRoot = vim.fn.getcwd(),
       protocol = "inspector",
       sourceMaps = true,
       userDataDir = false,
-      skipFiles = { '<node_internals>/**', 'node_modules/**' },
+      skipFiles = { "<node_internals>/**", "node_modules/**" },
+      resolveSourceMapLocations = {
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+      },
     },
     -- only if language is javascript, offer this debug action
     language == "javascript"

@@ -1,0 +1,6 @@
+# /Users/zaadee/.config/tmuxinator/sys.yml
+
+name: sys
+root: ~/
+windows:
+ - explorer: ranger

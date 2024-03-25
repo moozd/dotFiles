@@ -23,17 +23,7 @@ return {
 
       vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
-      --
-      -- require("plugins.dap.adapters.cpptools")
-      -- require("plugins.dap.adapters.netcoredbg")
-      -- require("plugins.dap.adapters.godot")
-      -- require("plugins.dap.adapters.bash-debug-adapter")
-      -- require("plugins.dap.adapters.php-debug-adapter")
-      -- require("plugins.dap.adapters.dart-debug-adapter")
-      -- require("plugins.dap.adapters.java-debug")
-      -- require("plugins.dap.adapters.debugpy")
-      -- require("plugins.dap.adapters.go-debug-adapter")
-      require("plugins.dap.adapters.js-debug")
+      require("plugins.dap.adapters.js")
 
       dapui.setup()
 dap.listeners.before.attach.dapui_config = function()

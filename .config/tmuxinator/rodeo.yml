@@ -1,0 +1,36 @@
+# /Users/zaadee/.config/tmuxinator/rodeo.yml
+
+name: rodeo
+root: ~/Workspace/
+
+windows:
+  - ui:
+      root: ~/Workspace/rodeo-ui
+      panes:
+          - nvim .
+  - ui-git:
+      root: ~/Workspace/rodeo-ui/
+      layout: 4d8e,295x55,0,0[295x42,0,0,1,295x12,0,43,6]
+      panes:
+        - lazygit
+        - clear
+
+  - gateway:
+      root: ~/Workspace/rodeo-gateway/
+      panes:
+          - nvim .
+
+  - core:
+      root: ~/Workspace/rodeo-core/
+      panes:
+          - nvim .
+  - api:
+      root: ~/Workspace/rodeo-api/
+      layout: 4d8e,295x55,0,0[295x42,0,0,1,295x12,0,43,6]
+      panes:
+          - lazygit
+          - hasura console --envfile=console.env
+  - devkit:
+      root: ~/Workspace/rodeo-local-development-kit/
+      panes:
+          - lazydocker

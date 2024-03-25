@@ -6,13 +6,14 @@ return {
     config = function(opts)
       require("transparent").setup({
         extra_groups = {
-          "NormalFloat",    -- plugins which have float panel such as Lazy, Mason, LspInfo
+          "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
           "NvimTreeNormal", -- NvimTree
         },
       })
     end,
   },
   {
+    enabled = false,
     "goolord/alpha-nvim",
     event = "VimEnter",
     opts = require("plugins.ui.dashboard").opts,
@@ -83,11 +84,19 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true,          -- use a classic bottom cmdline for search
-          command_palette = false,       -- position the cmdline and popupmenu together
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = false, -- position the cmdline and popupmenu together
           long_message_to_split = false, -- long messages will be sent to a split
-          inc_rename = false,            -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,        -- add a border to hover docs and signature help
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
+        },
+        routes = {
+          {
+            event = "msg_show",
+            kind = "",
+            find = "dap",
+            opt = { skip = true },
+          },
         },
       })
     end,
@@ -139,9 +148,9 @@ return {
         winbar = true,
         content_layout = "center",
         sources = {
-          { source = "filesystem",  display_name = Util.get_icon("FolderClosed", 1) .. "File" },
-          { source = "buffers",     display_name = Util.get_icon("DefaultFile", 1) .. "Bufs" },
-          { source = "git_status",  display_name = Util.get_icon("Git", 1) .. "Git" },
+          { source = "filesystem", display_name = Util.get_icon("FolderClosed", 1) .. "File" },
+          { source = "buffers", display_name = Util.get_icon("DefaultFile", 1) .. "Bufs" },
+          { source = "git_status", display_name = Util.get_icon("Git", 1) .. "Git" },
           { source = "diagnostics", display_name = Util.get_icon("Diagnostic", 1) .. "Diagnostic" },
         },
       },
@@ -153,9 +162,9 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = Util.icons.GitAdd,       -- or "✚", but this is redundant info if you use git_status_colors on the name
+            added = Util.icons.GitAdd, -- or "✚", but this is redundant info if you use git_status_colors on the name
             modified = Util.icons.GitChange, -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted = Util.icons.GitDelete,  -- this can only be used in the git_status source
+            deleted = Util.icons.GitDelete, -- this can only be used in the git_status source
             renamed = Util.icons.GitRenamed, -- this can only be used in the git_status source
             -- Status type
             untracked = Util.icons.GitUntracked,
@@ -170,7 +179,7 @@ return {
       filesystem = {
         use_libuv_file_watcher = true,
         follow_current_file = {
-          enabled = true,         -- This will find and focus the file in the active buffer every time
+          enabled = true, -- This will find and focus the file in the active buffer every time
           --               -- the current file is changed while the tree is open.
           leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
