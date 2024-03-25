@@ -56,23 +56,24 @@ return function()
     sections = {
       lualine_a = {
         {
-
-          mode.icon_and_abbr,
+          mode.icon_and_text,
+          separator = { right = "", left = "" },
+        },
+        {
+          project,
           separator = { right = "", left = "" },
         },
       },
       lualine_b = {
-                project,
-
         "branch",
       },
       lualine_c = {
         "%=", --[[ add your center compoentnts here in place of this comment ]]
+      },
+      lualine_x = {
         macro,
         selection_count,
         search_count,
-      },
-      lualine_x = {
         lsp,
         "overseer",
         {
