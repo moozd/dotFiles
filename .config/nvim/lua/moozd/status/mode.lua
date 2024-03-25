@@ -29,14 +29,19 @@ local function get_mode()
     T = "TERM",
   }
 
-  return { icon = (icons[sm] or sm), abbr =" ".. abbr[sm].." " }
+  return { icon = (icons[sm] or sm), abbr = abbr[sm], text = mode }
 end
 
 local M = {}
 
-function M.abbr_with_icon()
+function M.icon_and_abbr()
   local m = get_mode()
-  return m.icon .. " " .. m.abbr
+  return m.icon .. " " .. string.lower(m.abbr)
+end
+
+function M.icon_and_text()
+  local m = get_mode()
+  return m.icon .. " " .. string.lower(m.text)
 end
 
 function M.icon()
@@ -45,6 +50,10 @@ end
 
 function M.abbr()
   return get_mode().abbr
+end
+
+function M.special()
+ return require("moozd.status.project")() .. " " .. M.icon_and_abbr()  
 end
 
 return M

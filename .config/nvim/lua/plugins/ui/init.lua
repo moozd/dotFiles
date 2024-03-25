@@ -13,7 +13,7 @@ return {
     end,
   },
   {
-    enabled = false,
+    enabled = true,
     "goolord/alpha-nvim",
     event = "VimEnter",
     opts = require("plugins.ui.dashboard").opts,
@@ -62,7 +62,7 @@ return {
   },
   {
     "folke/noice.nvim",
-    enabled = true,
+    enabled =false,
     event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     config = function()

@@ -14,29 +14,37 @@ return function()
   catppuccin.inactive.b.bg = "#1e1e2e"
   catppuccin.inactive.c.bg = "#1e1e2e"
 
-  -- catppuccin.normal.a.fg = catppuccin.normal.a.bg
-  -- catppuccin.normal.a.bg = "#1e1e2e"
+  local bg = "#11111b"
+  catppuccin.normal.a.fg = catppuccin.normal.a.bg
+  catppuccin.normal.a.bg = bg
   catppuccin.normal.b.bg = "#1e1e2e"
 
-  -- catppuccin.insert.a.fg = catppuccin.insert.a.bg
-  -- catppuccin.insert.a.bg = "#1e1e2e"
+  catppuccin.insert.a.fg = catppuccin.insert.a.bg
+  catppuccin.insert.a.bg = bg
   catppuccin.insert.b.bg = "#1e1e2e"
 
-  -- catppuccin.command.a.fg = catppuccin.command.a.bg
-  -- catppuccin.command.a.bg = "#1e1e2e"
+  catppuccin.command.a.fg = catppuccin.command.a.bg
+  catppuccin.command.a.bg = bg
   catppuccin.command.b.bg = "#1e1e2e"
 
-  -- catppuccin.terminal.a.fg = catppuccin.terminal.a.bg
-  -- catppuccin.terminal.a.bg = "#1e1e2e"
+  catppuccin.terminal.a.fg = catppuccin.terminal.a.bg
+  catppuccin.terminal.a.bg = bg
   catppuccin.terminal.b.bg = "#1e1e2e"
 
-  -- catppuccin.visual.a.fg = catppuccin.visual.a.bg
-  -- catppuccin.visual.a.bg = "#1e1e2e"
+  catppuccin.visual.a.fg = catppuccin.visual.a.bg
+  catppuccin.visual.a.bg = bg
   catppuccin.visual.b.bg = "#1e1e2e"
 
-  -- catppuccin.replace.a.fg = catppuccin.replace.a.bg
-  -- catppuccin.replace.a.bg = "#1e1e2e"
+  catppuccin.replace.a.fg = catppuccin.replace.a.bg
+  catppuccin.replace.a.bg = bg
   catppuccin.replace.b.bg = "#1e1e2e"
+
+  catppuccin.normal.a.gui = ""
+  catppuccin.insert.a.gui = ""
+  catppuccin.command.a.gui = ""
+  catppuccin.visual.a.gui = ""
+  catppuccin.terminal.a.gui = ""
+  catppuccin.replace.a.gui = ""
 
   require("lualine").setup({
     options = {
@@ -46,9 +54,16 @@ return function()
       component_separators = "",
     },
     sections = {
-      lualine_a = {},
+      lualine_a = {
+        {
+
+          mode.icon_and_abbr,
+          separator = { right = "", left = "" },
+        },
+      },
       lualine_b = {
-        mode.abbr_with_icon,
+                project,
+
         "branch",
       },
       lualine_c = {
@@ -81,12 +96,17 @@ return function()
         },
       },
       lualine_y = {
+        { "filetype", colored = true },
         "progress",
         "location",
-        { "filetype", colored = true },
-        project,
       },
-      lualine_z = {},
+      lualine_z = {
+        -- {
+        --   project,
+        --
+        --   separator = { right = "", left = "" },
+        -- },
+      },
     },
     inactive_sections = {
       lualine_a = { "filename" },
