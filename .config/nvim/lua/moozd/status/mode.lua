@@ -29,7 +29,7 @@ local function get_mode()
     T = "TERM",
   }
 
-  return { icon = (icons[sm] or sm), abbr = abbr[sm] }
+  return { icon = (icons[sm] or sm), abbr =" ".. abbr[sm].." " }
 end
 
 local M = {}

@@ -1,5 +1,6 @@
 local Util = require("moozd.util")
 local Apps = require("moozd.apps")
+local dap, dapui = require("dap"), require("dapui")
 
 local map = Util.empty_map_table()
 
@@ -73,7 +74,13 @@ else
   map.n["gi"] = { vim.lsp.buf.implementation, desc = "List implementations" }
   map.n["gk"] = { vim.lsp.buf.hover, desc = "Show hover help" }
   map.n["gK"] = { vim.lsp.buf.signature_help, desc = "Show signature help" }
-  map.n["<F12>"] = { "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find (Telescope)" }
+
+  map.n["<c-F5>"] = { dap.continue, desc = "start/continue" }
+  map.n["<c-F10>"] = { dap.step_over, desc = "step over" }
+  map.n["<c-F11>"] = { dap.step_into, desc = "step into" }
+  map.n["<c-F12>"] = { dap.step_out, desc = "step out" }
+    map.n["gj"] = { dap.toggle_breakpoint, desc = "Breakpoint" }
+
   map.n["<ESC>"] = { "<cmd>silent! noh<cr>" }
 
 
@@ -138,13 +145,12 @@ else
   map.n["<leader>oc"] = { "<cmd>OverseerRunCmd<cr>", desc = "Cmd" }
 
   --- DAP ------------------------------
-  local dap, dapui = require("dap"), require("dapui")
   map.n["<leader>d"] = sections.d
   map.n["<leader>db"] = { dap.toggle_breakpoint, desc = "Breakpoint" }
-  map.n["<leader>dc"] = { dap.continue, desc = "Start/Continue" }
-  map.n["<leader>do"] = { dap.step_over, desc = "Step over" }
-  map.n["<leader>di"] = { dap.step_into, desc = "Step into" }
-  map.n["<leader>du"] = { dap.step_out, desc = "Step out" }
+  map.n["<leader>dc"] = { dap.continue, desc = "start/continue" }
+  map.n["<leader>do"] = { dap.step_over, desc = "step over" }
+  map.n["<leader>di"] = { dap.step_into, desc = "step into" }
+  map.n["<leader>du"] = { dap.step_out, desc = "step out" }
   map.n["<leader>dx"] = { dap.terminate, desc = "Terminate" }
   map.n["<leader>dd"] = { dapui.toggle, desc = "Debugger" }
   map.n["<leader>df"] = { dapui.float_element, desc = "Float" }

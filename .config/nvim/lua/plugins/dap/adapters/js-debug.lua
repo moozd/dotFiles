@@ -43,9 +43,8 @@ for _, language in ipairs({ "typescript", "typescriptreact", "javascript", "java
           }, function(url)
             if url == nil or url == "" then
               return
-            else
-              coroutine.resume(co, url)
             end
+              coroutine.resume(co, url)
           end)
         end)
       end,

@@ -21,7 +21,7 @@ return function()
 
 
     if vim.api.nvim_buf_get_option(buf, "modified") then
-      file_icon = "" .. " "
+      file_icon = "" .. " "
    end
 
     return file_icon
