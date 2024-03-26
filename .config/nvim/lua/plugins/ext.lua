@@ -1,5 +1,3 @@
-local Util = require("moozd.util")
-
 return {
   {
     "kawre/leetcode.nvim",
@@ -18,7 +16,6 @@ return {
     opts = {
       lang = "javascript", -- configuration goes here
     },
-
   },
   {
     "glacambre/firenvim",
