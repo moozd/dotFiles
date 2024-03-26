@@ -14,7 +14,7 @@ local function get_mode()
     V = "",
     VL = "󰦩",
     VB = "󰹞",
-    C = "󱩡",
+    C = "󰘳",
     T = "󰘔",
     I = "󰙏",
   }
@@ -36,7 +36,7 @@ local M = {}
 
 function M.icon_and_abbr()
   local m = get_mode()
-  return m.icon .. " " .. string.lower(m.abbr)
+  return m.icon .. "  " .. string.lower(m.abbr)
 end
 
 function M.icon_and_text()
@@ -45,7 +45,7 @@ function M.icon_and_text()
 end
 
 function M.icon()
-  return get_mode().icon
+  return get_mode().icon .. " "
 end
 
 function M.abbr()
