@@ -1,7 +1,7 @@
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [window]
-padding = { x = 10, y = 10 }
+padding = { x = 5, y = 2 }
 
 # test tyhis ss
 [font]

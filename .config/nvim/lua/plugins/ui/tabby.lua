@@ -1,13 +1,13 @@
 return function()
   local palette = {
-    accent = "#a6e3a1",     -- orange
+    accent = "#a6e3a1", -- orange
     accent_sec = "#bac2de", -- fg4
 
-    bg = "#1e1e2e",         -- bg1
-    fg = "#c7c7c7",         -- fg3
+    bg = "#1e1e2e", -- bg1
+    fg = "#c7c7c7", -- fg3
 
-    fg_sec = "#94e2d5",     -- fg2
-    bg_sec = "#1e1e2e",     -- bg2
+    fg_sec = "#94e2d5", -- fg2
+    bg_sec = "#1e1e2e", -- bg2
 
     fg_buf_sec = "#94e2d5",
     bg_buf_sec = "#1e1e2e",
@@ -19,10 +19,9 @@ return function()
     local buf = vim.api.nvim_win_get_buf(winid)
     local file_icon = "  "
 
-
     if vim.api.nvim_buf_get_option(buf, "modified") then
       file_icon = "" .. " "
-   end
+    end
 
     return file_icon
   end
@@ -34,9 +33,7 @@ return function()
   local line = {
     hl = { fg = palette.fg, bg = palette.bg },
     layout = "active_wins_at_tail",
-    head = {
-      
-    },
+    head = {},
     active_tab = {
       label = function(tabid)
         return {
@@ -73,7 +70,7 @@ return function()
       label = function(winid)
         return {
           " " .. buficon(winid) .. filename.unique(winid) .. " ",
-          hl = { fg = palette.fg_buf_sec, bg = palette.bg_buf_sec, style = "bold" },
+          hl = { fg = palette.fg_buf_sec, bg = palette.bg_buf_sec },
         }
       end,
       -- left_sep = {
