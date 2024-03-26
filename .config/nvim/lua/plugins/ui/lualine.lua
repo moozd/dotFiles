@@ -56,15 +56,13 @@ return function()
     sections = {
       lualine_a = {
         {
-          mode.icon_and_text,
-          separator = { right = "", left = "" },
+          mode.icon_and_abbr,
+          -- separator = { right = " ", left = "" },
         },
-        {
-          project,
-          separator = { right = "", left = "" },
-        },
+        
       },
       lualine_b = {
+        project,
         "branch",
       },
       lualine_c = {
