@@ -123,7 +123,10 @@ mas "GarageBand", id: 682658836
 mas "imo", id: 1617395642
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
+mas "Kindle", id: 302584613
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Screen Recorder Robot Lite", id: 731892898
 mas "Slack", id: 803453959
 mas "Tailscale", id: 1475387142
+mas "WireGuard", id: 1451685025

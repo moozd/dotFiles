@@ -215,10 +215,10 @@ fix-mosh () {
 
 sync-config() {
  config status
- rm ~/Brewfile > /dev/null
- brew bundle dump --file=~/Brewfile > /dev/null
- config add ~/.config/nvim/* ~/.config/tmux/* ~/.config/alacritty/* ~/.config/tmuxinator/* ~/.zshrc ~/Brewfile > /dev/null
- config commit -m":rocket:" > /dev/null
- config push > /dev/null
+ rm ~/Brewfile 
+ brew bundle dump --file=~/Brewfile
+ config add ~/.config/nvim/* ~/.config/tmux/* ~/.config/alacritty/* ~/.config/tmuxinator/* ~/.zshrc ~/Brewfile 
+ config commit -m":rocket:" 
+ config push 
  print "Done."
 }
