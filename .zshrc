@@ -214,9 +214,9 @@ fix-mosh () {
 
 
 sync-config() {
+ rm ~/Brewfile
  brew bundle dump --file=~/Brewfile
- config add ~/Brewfile
- config add ~/.config/nvim/* ~/.config/tmux/* ~/.config/alacritty/* ~/.config/tmuxinator/* ~/.zshrc 
+ config add ~/.config/nvim/* ~/.config/tmux/* ~/.config/alacritty/* ~/.config/tmuxinator/* ~/.zshrc ~/Brewfile
  config commit -m":rocket:"
  config push
 }
