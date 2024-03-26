@@ -114,7 +114,7 @@ source $ZSH/oh-my-zsh.sh
 #=========================================================
 export XDG_CONFIG_HOME=~/.config
 
-alias config='/usr/bin/git --git-dir=/Users/zaadee/dotfiles/ --work-tree=/Users/zaadee'
+alias config='/usr/bin/git --git-dir=/Users/${USER}/dotfiles/ --work-tree=/Users/${USER}'
 alias vi='nvim'
 alias xs='tmuxinator start'
 alias xc='tmux new'
@@ -149,10 +149,10 @@ export PATH="/usr/local/opt/openjdk/bin:/opt/homebrew/bin:$PATH"
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/zaadee/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zaadee/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/${USER}/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/${USER}/Desktop/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/zaadee/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zaadee/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/${USER}/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/${USER}/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
 
 
 export PATH="$HOME/.local/bin":$PATH
@@ -178,11 +178,11 @@ gifify() {
 
 
 
-PATH="/Users/zaadee/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/zaadee/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/zaadee/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/zaadee/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/zaadee/perl5"; export PERL_MM_OPT;
+PATH="/Users/${USER}/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/${USER}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/${USER}:/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/${USER}/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/${USER}/perl5"; export PERL_MM_OPT;
 
 
 export FZF_DEFAULT_OPTS=" \
@@ -214,7 +214,7 @@ fix-mosh () {
 
 
 sync-config() {
-
+ brew bundle dump --file=~/Brewfile
  config add ~/.config/nvim/* ~/.config/tmux/* ~/.config/alacritty/* ~/.config/tmuxinator/* ~/.zshrc ~/Brewfile
  config commit -m":rocket:"
  config push
