@@ -143,6 +143,7 @@ else
   map.n["<leader>ob"] = { "<cmd>OverseerBuild<cr>", desc = "Build" }
   map.n["<leader>or"] = { "<cmd>OverseerRun<cr>", desc = "Run" }
   map.n["<leader>oc"] = { "<cmd>OverseerRunCmd<cr>", desc = "Cmd" }
+  map.n["<leader>oa"] = { "<cmd>OverseerTaskAction<cr>", desc = "Cmd" }
 
   --- DAP ------------------------------
   map.n["<leader>d"] = sections.d
