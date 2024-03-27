@@ -3,7 +3,6 @@ import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 [window]
 padding = { x = 5, y = 2 }
 
-# test tyhis ss
 [font]
 size = 15.00
 normal = { family = "M+1Code Nerd Font Propo", style = "Regular" }

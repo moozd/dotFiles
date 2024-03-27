@@ -57,13 +57,13 @@ else
   map.n["]t"] = { "<cmd>tabn<cr>", desc = "tab" }
   map.n["]b"] = { "<cmd>bnext<cr>", desc = "buffer" }
   map.n["]d"] = { vim.diagnostic.goto_next, desc = "problem" }
-  map.n["]c"] = { "<cmd>silent! GitGutterNextHunk<cr>", desc = "change" }
+  map.n["]c"] = { "<cmd>silent! Gitsigns next_hunk<cr>", desc = "change" }
   map.n["]j"] = { "<c-i>", desc = "jump" }
 
   map.n["[t"] = { "<cmd>tabp<cr>", desc = "tab" }
   map.n["[b"] = { "<cmd>bprev<cr>", desc = "buffer" }
   map.n["[d"] = { vim.diagnostic.goto_prev, desc = "problem" }
-  map.n["[c"] = { "<cmd>silent! GitGutterPrevHunk<cr>", desc = "change" }
+  map.n["[c"] = { "<cmd>silent! Gitsigns prev_hunk<cr>", desc = "change" }
   map.n["[j"] = { "<c-o>", desc = "jump" }
 
   ---lp
@@ -79,7 +79,7 @@ else
   map.n["<c-F10>"] = { dap.step_over, desc = "step over" }
   map.n["<c-F11>"] = { dap.step_into, desc = "step into" }
   map.n["<c-F12>"] = { dap.step_out, desc = "step out" }
-    map.n["gj"] = { dap.toggle_breakpoint, desc = "Breakpoint" }
+  map.n["gj"] = { dap.toggle_breakpoint, desc = "Breakpoint" }
 
   map.n["<ESC>"] = { "<cmd>silent! noh<cr>" }
 
@@ -134,8 +134,14 @@ else
     D = { desc = Util.get_icon("Diagnostic", 1) .. "Diagnostics" },
     l = { desc = Util.get_icon("GitUntracked", 1) .. "LeetCode" },
     o = { desc = Util.get_icon("Package", 1) .. "Overseer" },
-    s = { desc = Util.get_icon("Session", 1) .. "Session" },
+    S = { desc = Util.get_icon("Session", 1) .. "Session" },
+    s = { desc = " " .. "Database" },
   }
+
+  map.n["<leader>s"] = sections.s
+  map.n["<leader>ss"] = { "<cmd>DBUIToggle<cr>", desc = "UI" }
+  map.n["<leader>sa"] = { "<cmd>DBUIFindBuffer<cr>", desc = "Attach" }
+  map.n["<leader>sc"] = { "<cmd>DBUIAddConnection<cr>", desc = "Connections" }
 
   map.n["<leader>o"] = sections.o
   map.n["<leader>oo"] = { "<cmd>OverseerToggle right<cr>", desc = "Toggle" }
@@ -160,10 +166,10 @@ else
   --- Sessions --------------------------
   local resession = require("resession")
 
-  map.n["<leader>s"] = sections.s
-  map.n["<leader>ss"] = { resession.save, desc = "Save session." }
-  map.n["<leader>sl"] = { resession.load, desc = "Last session." }
-  map.n["<leader>sd"] = { resession.delete, desc = "Delete session." }
+  map.n["<leader>S"] = sections.S
+  map.n["<leader>Ss"] = { resession.save, desc = "Save session." }
+  map.n["<leader>Sl"] = { resession.load, desc = "Last session." }
+  map.n["<leader>Sd"] = { resession.delete, desc = "Delete session." }
 
   --- Explorer ---------------------------
   map.n["<leader>e"] = { "<cmd>Neotree focus toggle <cr>", desc = Util.get_icon("Explorer", 1) .. "Explorer" }
@@ -173,6 +179,8 @@ else
   map.n["<leader>gd"] = { "<cmd>Gdiffsplit<cr>", desc = "Diff" }
   map.n["<leader>gc"] = { "<cmd>BCommits<cr>", desc = "Commits" }
   map.n["<leader>gb"] = { "<cmd>Git blame<cr>", desc = "Blame" }
+  map.n["<leader>gl"] = { "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Blame line" }
+  map.n["<leader>gh"] = { "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk" }
 
   --- Apps -------------------------------
   map.n["<leader>a"] = sections.a
