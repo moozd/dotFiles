@@ -138,7 +138,7 @@ else
   }
 
   map.n["<leader>o"] = sections.o
-  map.n["<leader>oo"] = { "<cmd>OverseerToggle bottom<cr>", desc = "Toggle" }
+  map.n["<leader>oo"] = { "<cmd>OverseerToggle right<cr>", desc = "Toggle" }
   map.n["<leader>oi"] = { "<cmd>OverseerInfo<cr>", desc = "Info" }
   map.n["<leader>ob"] = { "<cmd>OverseerBuild<cr>", desc = "Build" }
   map.n["<leader>or"] = { "<cmd>OverseerRun<cr>", desc = "Run" }
