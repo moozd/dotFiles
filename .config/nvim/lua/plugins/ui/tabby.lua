@@ -27,17 +27,31 @@ return function()
   end
 
   local tabname = function(tabid)
-    return vim.api.nvim_tabpage_get_number(tabid)
+    local n = vim.api.nvim_tabpage_get_number(tabid)
+
+    local x = {
+      [1] = "󰲠",
+      [2] = "󰲢",
+      [3] = "󰲤",
+      [4] = "󰲦",
+      [5] = "󰲨",
+      [6] = "󰲪",
+      [7] = "󰲬",
+      [8] = "󰲮",
+      [9] = "󰲰",
+      [10] = "󰿬",
+    }
+    return x[n] or "󰟃"
   end
 
   local line = {
     hl = { fg = palette.fg, bg = palette.bg },
     layout = "active_wins_at_tail",
-    head = {},
+    head = { { "  " } },
     active_tab = {
       label = function(tabid)
         return {
-          " 󰪥 " .. tabname(tabid) .. " ",
+          " " .. tabname(tabid) .. " ",
           hl = { fg = palette.fg_sec, bg = palette.bg_sec, style = "bold" },
         }
       end,
@@ -53,7 +67,7 @@ return function()
     inactive_tab = {
       label = function(tabid)
         return {
-          "  " .. tabname(tabid) .. " ",
+          " " .. tabname(tabid) .. " ",
           hl = { fg = palette.fg, bg = palette.bg },
         }
       end,
