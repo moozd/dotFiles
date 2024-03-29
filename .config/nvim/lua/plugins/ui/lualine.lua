@@ -14,7 +14,7 @@ return function()
   catppuccin.inactive.b.bg = "#1e1e2e"
   catppuccin.inactive.c.bg = "#1e1e2e"
 
-  local bg = "#11111b"
+  local bg = "#181825"
   catppuccin.normal.a.fg = catppuccin.normal.a.bg
   catppuccin.normal.a.bg = bg
   catppuccin.normal.b.bg = "#1e1e2e"
