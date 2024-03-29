@@ -47,7 +47,7 @@ return function()
   local line = {
     hl = { fg = palette.fg, bg = palette.bg },
     layout = "active_wins_at_tail",
-    head = { { "  " } },
+    head = { { " " } },
     active_tab = {
       label = function(tabid)
         return {
