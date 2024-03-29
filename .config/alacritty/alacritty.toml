@@ -7,8 +7,8 @@ padding = { x = 9, y = 0 }
 size = 15.00
 normal = { family = "M+1Code Nerd Font", style = "Regular" }
 # italic = { family = "MonaspiceRn Nerd Font", style = "Light" }
-offset = { x = 0, y = 10 }
-glyph_offset = { x = 0, y = 5 }
+offset = { x = 0, y = 8 }
+glyph_offset = { x = 0, y = 4 }
 
 [mouse]
 hide_when_typing = true
