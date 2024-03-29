@@ -77,9 +77,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions docker docker-compose firebase)
+plugins=(git jira aliases brew docker docker-compose fd fzf tmux tmuxinator jsontools)
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -116,11 +115,6 @@ export XDG_CONFIG_HOME=~/.config
 
 alias config='/usr/bin/git --git-dir=/Users/${USER}/dotfiles/ --work-tree=/Users/${USER}'
 alias vi='nvim'
-alias xs='tmuxinator start'
-alias xc='tmux new'
-alias xa='tmux attach'
-alias xk='tmux kill-server'
-alias e=neovide
 
 alias python='python3'
 alias pip='pip3'
@@ -223,6 +217,15 @@ sync-config() {
  print "Done."
 }
 
+
+qe () {
+  nvim $(fzf)
+}
+
 nvm use --lts >> /dev/null
 
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+
+
+source $ZSH/oh-my-zsh.sh

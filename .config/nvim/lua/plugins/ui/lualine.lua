@@ -59,14 +59,13 @@ return function()
           mode.icon_and_abbr,
           -- separator = { right = " ", left = "" },
         },
-        
       },
       lualine_b = {
         project,
         "branch",
       },
       lualine_c = {
-        "%=", --[[ add your center compoentnts here in place of this comment ]]
+        "%=", --[[ add your center components here in place of this comment ]]
       },
       lualine_x = {
         macro,

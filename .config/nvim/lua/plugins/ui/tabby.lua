@@ -6,10 +6,10 @@ return function()
     bg = "#1e1e2e", -- bg1
     fg = "#c7c7c7", -- fg3
 
-    fg_sec = "#94e2d5", -- fg2
+    fg_sec = "#a6e3a1", -- fg2
     bg_sec = "#1e1e2e", -- bg2
 
-    fg_buf_sec = "#94e2d5",
+    fg_buf_sec = "#74c7ec",
     bg_buf_sec = "#1e1e2e",
   }
 
@@ -51,7 +51,7 @@ return function()
     active_tab = {
       label = function(tabid)
         return {
-          " " .. tabname(tabid) .. " ",
+          tabname(tabid) .. "  ",
           hl = { fg = palette.fg_sec, bg = palette.bg_sec, style = "bold" },
         }
       end,
@@ -67,7 +67,7 @@ return function()
     inactive_tab = {
       label = function(tabid)
         return {
-          " " .. tabname(tabid) .. " ",
+           tabname(tabid) .. "  ",
           hl = { fg = palette.fg, bg = palette.bg },
         }
       end,
@@ -83,8 +83,8 @@ return function()
     top_win = {
       label = function(winid)
         return {
-          " " .. buficon(winid) .. filename.unique(winid) .. " ",
-          hl = { fg = palette.fg_buf_sec, bg = palette.bg_buf_sec },
+          buficon(winid) .. filename.unique(winid) .. "  ",
+          hl = { fg = palette.fg_buf_sec, bg = palette.bg_buf_sec,style='bold' },
         }
       end,
       -- left_sep = {
@@ -99,7 +99,7 @@ return function()
     win = {
       label = function(winid)
         return {
-          " " .. buficon(winid) .. filename.unique(winid) .. " ",
+          buficon(winid) .. filename.unique(winid) .. "  ",
           hl = { fg = palette.fg, bg = palette.bg },
         }
       end,
