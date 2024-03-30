@@ -36,12 +36,12 @@ local M = {}
 
 function M.icon_and_abbr()
   local m = get_mode()
-  return m.icon .. " " .. string.lower(m.abbr)
+  return m.icon .. "  " .. string.lower(m.abbr)
 end
 
 function M.icon_and_text()
   local m = get_mode()
-  return m.icon .. " " .. string.lower(m.text)
+  return m.icon .. "  " .. string.lower(m.text)
 end
 
 function M.icon()
@@ -53,7 +53,7 @@ function M.abbr()
 end
 
 function M.special()
- return require("moozd.status.project")() .. " " .. M.icon_and_abbr()  
+  return require("moozd.status.project")() .. " " .. M.icon_and_abbr()
 end
 
 return M
