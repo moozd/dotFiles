@@ -4,24 +4,28 @@ name: rodeo
 root: ~/Workspace/
 
 windows:
-   - devkit:
+  - devkit:
       root: ~/Workspace/rodeo-local-development-kit/
       panes:
-          - lazydocker
-  - ui:
-      root: ~/Workspace/rodeo-ui
-      panes:
-          - vi
-  - gateway:
-      root: ~/Workspace/rodeo-gateway/
-      panes:
-          - vi
-  - core:
-      root: ~/Workspace/rodeo-core/
-      panes:
-          - vi
+        - lazydocker
   - api:
       root: ~/Workspace/rodeo-api/
       panes:
-          - vi
+        - vi
+  - queries:
+      root: ~/Workspace/db/
+      panes:
+        - vi
+  - gateway:
+      root: ~/Workspace/rodeo-gateway/
+      panes:
+        - vi
+  - core:
+      root: ~/Workspace/rodeo-core/
+      panes:
+        - vi
+  - ui:
+      root: ~/Workspace/rodeo-ui
+      panes:
+        - vi
 
