@@ -14,7 +14,7 @@ return function()
   catppuccin.inactive.b.bg = "#1e1e2e"
   catppuccin.inactive.c.bg = "#1e1e2e"
 
-  local bg = "#181825"
+  local bg = "#11111b"
   catppuccin.normal.a.fg = catppuccin.normal.a.bg
   catppuccin.normal.a.bg = bg
   catppuccin.normal.b.bg = "#1e1e2e"
@@ -39,12 +39,12 @@ return function()
   catppuccin.replace.a.bg = bg
   catppuccin.replace.b.bg = "#1e1e2e"
 
-  catppuccin.normal.a.gui = ""
-  catppuccin.insert.a.gui = ""
-  catppuccin.command.a.gui = ""
-  catppuccin.visual.a.gui = ""
-  catppuccin.terminal.a.gui = ""
-  catppuccin.replace.a.gui = ""
+  catppuccin.normal.a.gui = "italic"
+  catppuccin.insert.a.gui = "italic"
+  catppuccin.command.a.gui = "italic"
+  catppuccin.visual.a.gui = "italic"
+  catppuccin.terminal.a.gui = "italic"
+  catppuccin.replace.a.gui = "italic"
 
   require("lualine").setup({
     options = {
@@ -57,7 +57,6 @@ return function()
       lualine_a = {
         {
           mode.icon_and_abbr,
-          -- separator = { right = " ", left = "" },
         },
       },
       lualine_b = {

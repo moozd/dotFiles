@@ -36,7 +36,7 @@ local M = {}
 
 function M.icon_and_abbr()
   local m = get_mode()
-  return m.icon .. "  " .. string.lower(m.abbr)
+  return m.icon .. " " .. string.lower(m.abbr)
 end
 
 function M.icon_and_text()
