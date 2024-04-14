@@ -1,14 +1,13 @@
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [window]
-padding = { x = 9, y = 0 }
+padding = { x = 12, y = 2 }
 
 [font]
-size = 15.00
-normal = { family = "M+1Code Nerd Font", style = "Regular" }
-italic = { family = "MonaspiceRn Nerd Font", style = "Light" }
-offset = { x = 0, y = 8 }
-glyph_offset = { x = 0, y = 4 }
+size = 12.25
+normal = { family = "M+CodeLatX Nerd Font", style = "Regular" }
+offset = { x = 0, y = 0 }
+glyph_offset = { x = 0, y = 0 }
 
 [mouse]
 hide_when_typing = true

@@ -7,10 +7,13 @@ windows:
   - nvim:
       root: ~/.config/nvim/
       panes:
-        - nvim .
-  - kitty:
-      root: ~/.config/kitty/
+        - vi
+  - alacritty:
+      root: ~/.config/alacritty/
       panes:
-        - nvim .
-  - tmux: nvim .tmux.conf
-  - zsh: nvim .zshrc
+        - vi
+  - tmux:
+     root: ~/.config/tmux
+     panes:
+       - vi
+  - zsh: vi .zshrc

@@ -1,3 +1,4 @@
+local Util = require("moozd.util")
 local get_icon = require("moozd.util").get_icon
 local lsp = require("moozd.status.lsp")
 local mode = require("moozd.status.mode")
@@ -8,43 +9,42 @@ local macro = require("moozd.status.macro")
 
 return function()
   local catppuccin = require("lualine.themes.catppuccin")
-  catppuccin.normal.c.bg = "#1e1e2e"
+  local bg = Util.get_hl_color("Normal", "bg#")
   catppuccin.normal.c.fg = "#45475a"
-  catppuccin.inactive.a.bg = "#1e1e2e"
-  catppuccin.inactive.b.bg = "#1e1e2e"
-  catppuccin.inactive.c.bg = "#1e1e2e"
+  catppuccin.normal.c.bg =bg 
+  catppuccin.inactive.a.bg = bg
+  catppuccin.inactive.b.bg = bg
+  catppuccin.inactive.c.bg = bg
 
-  local bg = "#1e1e2e"
   catppuccin.normal.a.fg = catppuccin.normal.a.bg
   catppuccin.normal.a.bg = bg
-  catppuccin.normal.b.bg = "#1e1e2e"
 
   catppuccin.insert.a.fg = catppuccin.insert.a.bg
   catppuccin.insert.a.bg = bg
-  catppuccin.insert.b.bg = "#1e1e2e"
 
   catppuccin.command.a.fg = catppuccin.command.a.bg
   catppuccin.command.a.bg = bg
-  catppuccin.command.b.bg = "#1e1e2e"
 
   catppuccin.terminal.a.fg = catppuccin.terminal.a.bg
   catppuccin.terminal.a.bg = bg
-  catppuccin.terminal.b.bg = "#1e1e2e"
-
   catppuccin.visual.a.fg = catppuccin.visual.a.bg
   catppuccin.visual.a.bg = bg
-  catppuccin.visual.b.bg = "#1e1e2e"
-
   catppuccin.replace.a.fg = catppuccin.replace.a.bg
   catppuccin.replace.a.bg = bg
-  catppuccin.replace.b.bg = "#1e1e2e"
 
-  catppuccin.normal.a.gui = "italic"
-  catppuccin.insert.a.gui = "italic"
-  catppuccin.command.a.gui = "italic"
-  catppuccin.visual.a.gui = "italic"
-  catppuccin.terminal.a.gui = "italic"
-  catppuccin.replace.a.gui = "italic"
+  catppuccin.normal.b.bg = bg
+  catppuccin.command.b.bg = bg
+  catppuccin.terminal.b.bg = bg
+  catppuccin.visual.b.bg = bg
+  catppuccin.replace.b.bg = bg
+  catppuccin.insert.b.bg = bg
+
+  catppuccin.normal.a.gui = "bold"
+  catppuccin.insert.a.gui = "bold"
+  catppuccin.command.a.gui = "bold"
+  catppuccin.visual.a.gui = "bold"
+  catppuccin.terminal.a.gui = "bold"
+  catppuccin.replace.a.gui = "bold"
 
   require("lualine").setup({
     options = {
@@ -55,21 +55,20 @@ return function()
     },
     sections = {
       lualine_a = {
-        {
-          mode.icon_and_text,
-        },
+        mode.raw,
       },
       lualine_b = {
-        project,
         "branch",
       },
       lualine_c = {
-        "%=", --[[ add your center components here in place of this comment ]]
+        "%=",
+        --[[ add your center components here in place of this comment ]]
       },
       lualine_x = {
         macro,
         selection_count,
         search_count,
+        project,
         lsp,
         "overseer",
         {

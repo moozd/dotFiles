@@ -118,6 +118,8 @@ alias vi='nvim'
 
 alias python='python3'
 alias pip='pip3'
+alias wg='nodemon -q --exec "clear && go run"' 
+alias wn='nodemon -q --exec "clear && node"' 
 
 
 
@@ -218,11 +220,17 @@ sync-config() {
 }
 
 
+
 qe () {
   nvim $(fzf)
 }
 
-nvm use --lts >> /dev/null
+
+
+
+
+
+nvm use 18.18.2 >> /dev/null
 
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 

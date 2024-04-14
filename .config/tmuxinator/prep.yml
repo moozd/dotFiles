@@ -1,0 +1,12 @@
+# /Users/zaadee/.config/tmuxinator/leetcode.yml
+
+name: prep
+root: ~/
+
+windows:
+  - Leet: vi -c"Leet"
+  - Draft:
+      root: ~/study/
+      panes:
+        - vi
+       

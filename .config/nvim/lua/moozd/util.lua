@@ -41,11 +41,11 @@ M.icons = {
   FolderEmpty = "",
   FolderOpen = "",
   Git = "󰊢",
-  GitAdd = "",
+  GitAdd = "",
   GitBranch = "",
-  GitChange = "",
+  GitChange = "󰏫",
   GitConflict = "",
-  GitDelete = "",
+  GitDelete = "-",
   GitIgnored = "◌",
   GitRenamed = "➜",
   GitSign = "▎",
@@ -93,6 +93,11 @@ function M.create_terminal_app(opts)
   return function()
     t:toggle()
   end
+end
+
+
+function M.get_hl_color(group, attr)
+    return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), attr)
 end
 
 function M.close_all_but_this()

@@ -47,6 +47,7 @@ brew "ghostscript"
 brew "gifsicle"
 brew "git-delta"
 brew "git-flow"
+brew "glow"
 brew "gnu-sed"
 brew "go-jira", link: false
 brew "pkg-config"
@@ -73,6 +74,7 @@ brew "lua-language-server"
 brew "luacheck"
 brew "lynx"
 brew "mas"
+brew "mdp"
 brew "micro"
 brew "mosh"
 brew "neofetch"
@@ -101,6 +103,7 @@ brew "tmuxinator"
 brew "typos-cli"
 brew "ugrep"
 brew "universal-ctags"
+brew "vimpager"
 brew "w3m"
 brew "watchman"
 brew "wget"
@@ -120,6 +123,7 @@ cask "neovide"
 cask "qutebrowser"
 cask "terminology"
 cask "vieb"
+cask "wezterm"
 cask "xquartz"
 mas "GarageBand", id: 682658836
 mas "imo", id: 1617395642
@@ -130,5 +134,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Screen Recorder Robot Lite", id: 731892898
 mas "Slack", id: 803453959
+mas "Smart Countdown Timer", id: 1410709951
 mas "Tailscale", id: 1475387142
 mas "WireGuard", id: 1451685025

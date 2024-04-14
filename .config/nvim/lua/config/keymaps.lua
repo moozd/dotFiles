@@ -107,6 +107,7 @@ else
 
   map.n["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
   map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
+  map.n["<c-ESC>"] = { "<c-\\><c-n>" }
 
   --- overall-------------------------
   -- stylua: ignore
@@ -149,8 +150,12 @@ else
   map.n["<leader>ob"] = { "<cmd>OverseerBuild<cr>", desc = "Build" }
   map.n["<leader>or"] = { "<cmd>OverseerRun<cr>", desc = "Run" }
   map.n["<leader>oc"] = { "<cmd>OverseerRunCmd<cr>", desc = "Cmd" }
-  map.n["<leader>oa"] = { "<cmd>OverseerTaskAction<cr>", desc = "Cmd" }
+  map.n["<leader>oa"] = { "<cmd>OverseerTaskAction<cr>", desc = "Action" }
+  map.n["<leader>ob"] = { desc = "Bundle" }
+  map.n["<leader>obl"] = { "<cmd>OverseerLoadBundle<cr>", desc = "Load" }
+  map.n["<leader>obd"] = { "<cmd>OverseerDeleteBundle<cr>", desc = "Delete" }
 
+  map.n["<leader>obs"] = { "<cmd>OverseerSaveBundle<cr>", desc = "Save" }
   --- DAP ------------------------------
   map.n["<leader>d"] = sections.d
   map.n["<leader>db"] = { dap.toggle_breakpoint, desc = "Breakpoint" }
@@ -189,7 +194,7 @@ else
   map.n["<leader>at"] = { Apps.terminal, desc = Util.get_icon("Terminal", 1) .. "Terminal" }
   map.n["<leader>ad"] = { Apps.lazydocker, desc = Util.get_icon("Docker", 1) .. "Docker" }
   map.n["<leader>as"] = { Apps.btm, desc = Util.get_icon("Stats", 1) .. "Stats" }
-  map.n["<leader>am"] = { Apps.spotify, desc = Util.get_icon("Spotify", 1) .. "Spotify" }
+  map.n["<leader>ar"] = { Apps.glow, desc = "  " .. "Readme" }
   map.n["<leader>ab"] = { "<cmd>ToggleTerm<cr>", desc = "  Bottom Terminal" }
   --
 

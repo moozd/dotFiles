@@ -34,18 +34,30 @@ end
 
 local M = {}
 
+function M.raw()
+    return get_mode().text
+end
+
 function M.icon_and_abbr()
   local m = get_mode()
-  return m.icon .. "  " .. string.lower(m.abbr)
+  return m.icon .. " " .. m.abbr
 end
 
 function M.icon_and_text()
   local m = get_mode()
-  return m.icon .. "  " .. string.lower(m.text)
+  return m.icon .. "  " .. m.text:lower():gsub("^%l", string.upper)
 end
 
 function M.icon()
   return get_mode().icon .. " "
+end
+
+function M.text()
+  return get_mode().text
+end
+
+function M.vim_style()
+  return "--" .. get_mode().text .. "--"
 end
 
 function M.abbr()

@@ -1,0 +1,10 @@
+# /Users/zaadee/.config/tmuxinator/anaegina.yml
+
+name: anaegina
+root: ~/Github
+
+windows:
+  - code:
+      root: ~/Github/anaegina/ 
+      panes:
+        - vi

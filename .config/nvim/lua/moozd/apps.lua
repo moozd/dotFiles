@@ -7,4 +7,5 @@ return {
   lazydocker = app({ cmd = "lazydocker", dir = "~/" }),
   btm = app({ cmd = "btm -b" }),
   spotify = app({ cmd = "spt" }),
+  glow = app({cmd="glow"})
 }

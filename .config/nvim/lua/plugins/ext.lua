@@ -27,4 +27,10 @@ return {
       vim.fn["firenvim#install"](0)
     end,
   },
+  {
+  "lervag/vimtex",
+  init = function()
+    -- Use init for configuration, don't use the more common "config".
+  end
+}
 }

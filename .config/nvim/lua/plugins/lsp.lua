@@ -48,7 +48,6 @@ local function setup_lsp()
       end,
     },
   })
-
 end
 
 return {
@@ -74,7 +73,7 @@ return {
     "L3MON4D3/LuaSnip",
     build = (not jit.os:find("Windows"))
         and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
-        or nil,
+      or nil,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -91,6 +90,13 @@ return {
   {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
+    enabled = function()
+      -- NOTE: https://www.reddit.com/r/neovim/comments/17v7azl/comment/k991hyq/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+      local disabled = false
+      local context = require("cmp.config.context")
+      disabled = disabled or (context.in_treesitter_capture("comment") and vim.bo.filetype ~= "lua")
+      return not disabled
+    end,
     -- event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -102,7 +108,7 @@ return {
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
-      local defaults = require("cmp.config.default")()
+      local compare = require("cmp.config.compare")
       return {
         completion = {
           completeopt = "menu,menuone",
@@ -113,7 +119,6 @@ return {
           },
           completion = {
             border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-            -- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
             winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
           },
         },
@@ -136,12 +141,13 @@ return {
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "vim-dadbod-completion", priority = 700 },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
-          { name = "gitmoji" },
+          { name = "nvim_lsp", group_index = 1, keyword_length = 3, priority = 1500 },
+          { name = "luasnip", group_index = 2, keyword_length = 2, priority = 20 },
+          { name = "path", group_index = 3, keyword_length = 1, priority = 10 },
+          { name = "buffer", group_index = 4, keyword_length = 5, priority = 0 },
+
+          { name = "vim-dadbod-completion", priority = 1500 },
+          { name = "gitmoji", priority = 5 },
         }),
         formatting = {
           format = require("lspkind").cmp_format({
@@ -154,7 +160,22 @@ return {
             hl_group = "CmpGhostText",
           },
         },
-        sorting = defaults.sorting,
+        sorting = {
+          priority_weight = 1.0,
+          comparators = {
+            -- compare.score_offset, -- not good at all
+            compare.locality,
+            compare.exact,
+            compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+            compare.kind,
+            compare.order,
+            compare.recently_used,
+            compare.offset,
+            -- compare.scopes, -- what?
+            -- compare.sort_text,
+            -- compare.length, -- useless
+          },
+        },
       }
     end,
   },
