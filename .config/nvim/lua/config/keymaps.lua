@@ -231,6 +231,8 @@ else
     map.n["<leader>lr"] = { "<cmd>Leet run<cr>", desc = "Run" }
     map.n["<leader>ls"] = { "<cmd>Leet submit<cr>", desc = "Submit" }
     map.n["<leader>ll"] = { "<cmd>Leet list<cr>", desc = "Find" }
+    map.n["<leader>lL"] = { "<cmd>Language<cr>", desc = "Language" }
+
   end
 end
 

@@ -90,14 +90,6 @@ return {
   {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
-    enabled = function()
-      -- NOTE: https://www.reddit.com/r/neovim/comments/17v7azl/comment/k991hyq/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-      local disabled = false
-      local context = require("cmp.config.context")
-      disabled = disabled or (context.in_treesitter_capture("comment") and vim.bo.filetype ~= "lua")
-      return not disabled
-    end,
-    -- event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",

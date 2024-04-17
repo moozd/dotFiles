@@ -213,7 +213,7 @@ sync-config() {
  config status
  rm ~/Brewfile 
  brew bundle dump --file=~/Brewfile
- config add ~/.config/nvim/* ~/.config/tmux/* ~/.config/alacritty/* ~/.config/tmuxinator/* ~/.zshrc ~/Brewfile 
+ config add ~/.config/nvim/* ~/.config/tmux/* ~/.config/wezterm/* ~/.config/alacritty/* ~/.config/tmuxinator/* ~/.zshrc ~/Brewfile 
  config commit -m":rocket:" 
  config push 
  print "Done."
