@@ -5,6 +5,10 @@ return {
       require("template-string").setup()
     end,
   },
+      {
+   'mcauley-penney/visual-whitespace.nvim',
+    config = true
+  },
 
 
   {

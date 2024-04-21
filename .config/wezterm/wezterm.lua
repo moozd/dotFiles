@@ -20,7 +20,7 @@ return {
 		top = 0,
 		bottom = 0,
 	},
-	font = wezterm.font("RecMonoCasual Nerd Font", { stretch = "Expanded", weight = "Medium", italic = false }),
+	font = wezterm.font("RecMonoDuotone Nerd Font", { stretch = "Expanded", weight = "Medium", italic = false }),
 	font_size = 14,
 	font_rules = {
 		{
